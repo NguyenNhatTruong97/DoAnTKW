@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genshin Impact</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Thêm hiệu ứng hover cho nav links */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #8B4513;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: #5c2807 !important;
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* Hiệu ứng hover cho nút tải game */
+        .btn-warning {
+            border: 2px solid #8B4513;
+            background-color: #FFF2CC;
+            transition: all 0.3s ease;
+        }
+
+        .btn-warning:hover {
+            background-color: #8B4513;
+            color: #FFF2CC !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.2);
+        }
+
+        /* Thêm vào phần style hiện có */
+        .region-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .region-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        /*nút hamburger*/
+        @media (max-width: 991px) {
+        .navbar-collapse {
+            background: linear-gradient(to right, #FFF2CC, #FFFAF0);
+            padding: 20px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .navbar-nav {
+            text-align: center;
+        }
+
+        .btn-warning {
+            display: block;
+            margin: 10px auto !important;
+            width: fit-content;
+        }
+    }
+    </style>
+</head>
+
+<body>
+<!-- Thanh điều hướng -->
+<nav class="navbar navbar-expand-lg" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: linear-gradient(to right, #FFF2CC, #FFFAF0);">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#" style="margin-left: 15px;">
+            <img src="picture/logo.jpg" alt="logo" height="60px">
+        </a>
+
+        <!-- Nút hamburger -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                style="border: none; padding: 8px;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="genshin.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="nhanvat.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nhân vật</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="nguyento.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nguyên tố</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sdk.hoyoverse.com/payment/genshin/index.html#/" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nạp</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://genshin.hoyoverse.com/vi/gift" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Mã quà</a>
+                </li>
+            </ul>
+            <a href="https://genshin.hoyoverse.com/vi/download" target="_blank" class="btn btn-warning" 
+               style="padding: 10px 20px; font-size: 18px; color: #8B4513; text-decoration: none; transition: all 0.3s ease; margin: 10px 15px;">
+                Tải game
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Video phần đầu -->
+    <div class="container-fluid">
+        <video width="100%" autoplay loop muted style="margin-top: 80px;">
+            <source src="video/videogenshin.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Thông tin game -->
+    <div class="container-fluid position-relative p-0" style="padding: 20px;">
+        <div class="background-overlay"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('nenphu.jpg'); background-size: cover; background-position: center; filter: blur(8px); opacity: 0.5; z-index: 1;">
+        </div>
+
+        <div class="content" style="position: relative; z-index: 2; padding: 40px 0;">
+            <h2 class="text-center mb-4"
+                style="color: #2C3E50; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">Thông tin về
+                Genshin Impact</h2>
+
+            <!-- Đoạn văn giới thiệu -->
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p
+                        style="font-size: 18px; line-height: 1.8; background: rgba(255,255,255,0.8); padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        Genshin Impact là một trò chơi nhập vai hành động thế giới mở miễn phí được phát triển bởi
+                        miHoYo.
+                        Game được phát hành vào ngày 28 tháng 9 năm 2020 trên nhiều nền tảng bao gồm Windows,
+                        PlayStation 4,
+                        PlayStation 5, iOS và Android. Trò chơi nổi tiếng với đồ họa anime tuyệt đẹp, hệ thống chiến đấu
+                        đc đáo
+                        và thế giới mở rộng lớn đầy màu sắc.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Ảnh minh họa -->
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8 text-center">
+                    <img src="picture/gioithieu.jpg" alt="Genshin Impact" class="img-fluid"
+                        style="border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); transition: transform 0.3s ease;">
+                </div>
+            </div>
+
+            <!-- Cấu hình yêu cầu -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8">
+                    <h3 class="text-center mb-4" style="color: #2C3E50; font-weight: bold;">Cấu hình đề nghị</h3>
+                    <div
+                        style="background: rgba(255,255,255,0.9); border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden;">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 30%; background-color: rgba(255,242,204,0.5);">Hệ điều hành:</th>
+                                    <td>Windows 7 SP1 64-bit trở lên</td>
+                                </tr>
+                                <tr>
+                                    <th>CPU:</th>
+                                    <td>Intel Core i7 hoặc tương đương</td>
+                                </tr>
+                                <tr>
+                                    <th>RAM:</th>
+                                    <td>16 GB</td>
+                                </tr>
+                                <tr>
+                                    <th>GPU:</th>
+                                    <td>NVIDIA GeForce GTX 1060 6GB trở lên</td>
+                                </tr>
+                                <tr>
+                                    <th>Dung lượng ổ cứng:</th>
+                                    <td>30 GB trống</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Đoạn giới thiệu sơ lược -->
+    <div class="container-fluid position-relative p-0">
+        <div class="background-overlay"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('nenphu.jpg'); background-size: cover; background-position: center; filter: blur(8px); opacity: 0.5; z-index: 1;">
+        </div>
+        <h3 class="text-center mb-4" style="color: #2C3E50; font-weight: bold;">Lý do nên trải nghiệm</h3>
+
+        <div class="content" style="position: relative; z-index: 2; padding: 40px 20px;">
+            <!-- Miễn phí -->
+            <div class="row mb-5 align-items-center reason-section mienphi">
+                <div class="col-md-6">
+                    <img src="picture/mienphi.jpg" alt="Image 1" class="img-fluid"
+                        style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </div>
+                <div class="col-md-6">
+                    <h3 style="color: #2C3E50; font-weight: bold; margin-bottom: 20px;">Đây là một tựa game miễn phí
+                    </h3>
+                    <p style="font-size: 16px; line-height: 1.8;">
+                        Miễn phí! Miễn phí! Miễn phí! Điều quan trọng phải nói lại 3 lần. Đùa tí thôi nhưng thật sự đây
+                        là một game
+                        <a href="https://vi.wikipedia.org/wiki/Tr%C3%B2_ch%C6%A1i_nh%E1%BA%ADp_vai" target="_blank"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Role-Playing Game (RPG) là th loại game nhập vai, cho phép người chơi điều khiển nhân vật trong một thế giới ảo và phát triển nhân vật thông qua các nhiệm vụ và cuộc phiêu lưu">RPG</a>
+                        hoàn toàn miễn phí cho các bạn trải nghiệm.
+                        Không tốn tiền để tải game, không tốn tiền để mua các vật phẩm đặc biệt cũng như cũng chẳng tốn
+                        tiền để sở hữu những nhân vật mạnh nhất trong game.
+                        Tất cả bạn có thể 'cày' được, tuy nhiên, game vẫn hỗ trợ hệ thống nạp tiền để các bạn 'cày' dễ
+                        hơn.
+                        Tuy nhiên, nó chứa yếu tố gacha (quay thưởng), nên dù bạn có nạp nhiều đến mấy mà nhân phẩm đã
+                        cạn thì cũng chẳng mạnh hơn được đâu nha.
+                    </p>
+                </div>
+            </div>
+            <!--Hỗ trợ đa thiết bị-->
+            <div class="row mb-5 align-items-center reason-section dathietbi">
+                <div class="col-md-6 order-md-2">
+                    <img src="picture/hotrodathietbi.jpg" alt="Image 2" class="img-fluid"
+                        style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </div>
+                <div class="col-md-6 order-md-1">
+                    <h3 style="color: #2C3E50; font-weight: bold; margin-bottom: 20px;">Hỗ trợ đa thiết bị</h3>
+                    <p style="font-size: 16px; line-height: 1.8;">
+                        <a href="https://vi.wikipedia.org/wiki/MiHoYo" target="_blank" data-toggle="tooltip"
+                            data-placement="top"
+                            title="MiHoYo (miHoYo) là một công ty phát triển trò chơi điện t của Trung Quốc, được thành lập vào năm 2012. Công ty này nổi tiếng với các tựa game như Genshin Impact, Honkai Impact 3rd">MiHoYo</a>
+                        đã rất chiều người chơi khi mang Genshin Impact lên 4 nền tảng: mobile, PC, PS3 và PS4.
+                        Bạn có thể dùng 1 tài khoản để chơi trên cả 4 nền tảng này, có nghĩa là dữ liệu người chơi sẽ
+                        được đồng bộ.
+                        Thật tiện lợi khi vui vui thì chiến trên máy tính, làm biếng một tí thì nằm chơi trên
+                        smartphone.
+                    </p>
+                </div>
+            </div>
+            <!--thế giới mở-->
+            <div class="row mb-5 align-items-center reason-section thegioimo">
+                <div class="col-md-6">
+                    <img src="picture/thegioimo.jpg" alt="Image 3" class="img-fluid"
+                        style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </div>
+                <div class="col-md-6">
+                    <h3 style="color: #2C3E50; font-weight: bold; margin-bottom: 20px;">Game thế giới mở vô cùng đặc sắc
+                    </h3>
+                    <p style="font-size: 16px; line-height: 1.8;">
+                        "Genshin Impact là sự kết hợp của nghệ thuật đồ họa anime và tính thẩm mĩ của nhiều nền văn hóa
+                        khác nhau.
+                        Người chơi sẽ có trải nghiệm hoàn toàn mới khi du hành qua các vùng đất khác nhau của Teyvat."
+                    </p>
+                </div>
+            </div>
+            <!--cốt truyện-->
+            <div class="row mb-5 align-items-center reason-section cottruyen">
+                <div class="col-md-6 order-md-2">
+                    <img src="picture/cottruyen.jpg" alt="Image 4" class="img-fluid"
+                        style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </div>
+                <div class="col-md-6 order-md-1">
+                    <h3 style="color: #2C3E50; font-weight: bold; margin-bottom: 20px;">Cốt truyện game cuốn hút</h3>
+                    <p style="font-size: 16px; line-height: 1.8;">
+                        Nhân vật chính bị đẩy đến Teyva, du hành trong th giới này, kết giao với nhng người bạn mới,
+                        những chiến hữu mới trên chuyến hành trình tìm kiếm 7 vị Thần nắm giữ các nguyên tố đến khi gặp
+                        lại người anh em thất lạc của mình.</p>
+                </div>
+            </div>
+            <!--nhân vật-->
+            <div class="row mb-5 align-items-center reason-section nhanvat">
+                <div class="col-md-6">
+                    <img src="picture/nhanvat.jpg" alt="Image 5" class="img-fluid"
+                        style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </div>
+                <div class="col-md-6">
+                    <h3 style="color: #2C3E50; font-weight: bold; margin-bottom: 20px;">Nhân vật đậm chất anime</h3>
+                    <p style="font-size: 16px; line-height: 1.8;">
+                        Trong quá trình khám phá Teyvat của mình, bạn sẽ được gặp những một dàn nhân vật đầy màu sắc và
+                        cá tính riêng,
+                        những người sẽ giúp bạn trong cuộc hành trình của mình.
+                        Ngoài ra có hơn 40 nhân vật bạn có thể điều khiển (có nhân vật cho free, có nhân vật phải quay
+                        thưởng),
+                        chiêu thức và cách chiến đấu của các nhân vật này cũng khác nhau. Mỗi nhân vật sở hữu nguyên tố
+                        riêng của bản thân,
+                        có 7 nguyên tố bao gồm: <strong>PHONG, NHAM, LÔI, THẢO, THỦY, HỎA và BĂNG</strong>.</p>
+                </div>
+            </div>
+            <!--vũ khí-->
+            <div class="row mb-5 align-items-center reason-section vukhi">
+                <div class="col-md-6 order-md-2">
+                    <img src="picture/vukhi.jpg" alt="Hệ thống vũ khí" class="img-fluid"
+                        style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </div>
+                <div class="col-md-6">
+                    <h3 style="color: #2C3E50; font-weight: bold; margin-bottom: 20px;">Hệ thống vũ khí đa dạng</h3>
+                    <p style="font-size: 16px; line-height: 1.8;">
+                        Game có hệ thống vũ khí đa dạng về ngoại hình và lối chơi.
+                        Vũ khí có thể được nâng cấp và tinh luyện để tăng sức mạnh.
+                        Để có được vũ khí phù hợp với mỗi một nhân vật (gọi là Trấn), người chơi cần may mắn hoặc tích
+                        lũy tài nguyên.
+                    </p>
+                </div>
+            </div>
+            <!--thánh di vật-->
+            <div class="row mb-5 align-items-center reason-section thanhdivat">
+                <div class="col-md-6">
+                    <img src="picture/thanhdivat.jpg" alt="Thánh di vt" class="img-fluid"
+                        style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </div>
+                <div class="col-md-6 order-md-1">
+                    <h3 style="color: #2C3E50; font-weight: bold; margin-bottom: 20px;">Thánh di vật phong phú</h3>
+                    <p style="font-size: 16px; line-height: 1.8;">
+                        Thánh di vật có nhiều cấp độ từ 1 sao đến 5 sao.
+                        Mỗi loại thánh di vật cung cấp hiệu ứng riêng, phù hợp với nguyên tố và lối chơ<i></i> ca nhân
+                        vật.
+                        Game không giới hạn việc sử dụng thánh di vật, người chơi có thể tự do lựa chọn theo phong cách
+                        riêng.
+                    </p>
+                </div>
+            </div>
+
+            <!--nguyên tố-->
+            <div class="row mb-5 align-items-center reason-section nguyento">
+                <div class="col-md-6 order-md-2">
+                    <img src="picture/nguyento.jpg" alt="Hệ thống vũ khí" class="img-fluid"
+                        style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </div>
+                <div class="col-md-6">
+                    <h3 style="color: #2C3E50; font-weight: bold; margin-bottom: 20px;">Sức mạnh nguyên tố</h3>
+                    <p style="font-size: 16px; line-height: 1.8;">
+                        Game có hệ thống sức mạnh riêng gọi là nguyên tố.
+                        7 loại nguyên tố mang lại 7 sức mạnh riêng nhưng khi kết hợp lại thì sẽ t
+                        o ra phản ứng (phản
+                        ứng nguyên tố - điểm đặc trưng của game).
+                        Để không bị "yếu" trong trò chơi, bạn nên tham khảo sơ qua mục<a href="nguyento.html"> nguyên tố
+                        </a> để hiểu thêm về cách dùng và tính sát thương nguyên tố.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phần giới thiệu bản đồ -->
+    <div class="container-fluid position-relative p-0">
+        <div class="background-overlay"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('nenphu.jpg'); background-size: cover; background-position: center; filter: blur(8px); opacity: 0.5; z-index: 1;">
+        </div>
+
+        <div class="content" style="position: relative; z-index: 2; padding: 40px 20px;">
+            <h2 class="text-center mb-5" style="color: #2C3E50; font-weight: bold;">Bản đồ - Khám phá thế giới Teyvat</h2>
+
+            <div class="row justify-content-center">
+                <!-- Mondstadt -->
+                <div class="col-md-6 mb-4">
+                    <div class="region-card" style="background: rgba(255,255,255,0.8); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <div class="region-image" style="position: relative; overflow: hidden; height: 300px;">
+                            <img src="picture/phongquoc.jpg" alt="Mondstadt" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                            <div class="region-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
+                            </div>
+                            <h3 class="region-title" style="position: absolute; bottom: 20px; left: 20px; color: white; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                                Mondstadt</h3>
+                        </div>
+                        <div class="region-content" style="padding: 25px;">
+                            <div class="region-info mb-3">
+                                <span class="badge" style="background-color: #77A1D3; padding: 8px 15px; border-radius: 20px; font-size: 14px; margin-right: 10px;">Phong Thần</span>
+                                <span class="badge" style="background-color: #79CBCA; padding: 8px 15px; border-radius: 20px; font-size: 14px;">Thành phố Tự Do</span>
+                            </div>
+                            <p style="font-size: 16px; line-height: 1.8; color: #2C3E50; margin-bottom: 20px;">
+                                Mondstadt là thành phố của Tự Do, được bảo hộ bởi Phong thần Barbatos. 
+                                Đây là vùng đất đầu tiên người chơi đặt chân đến trong hành trình khám phá Teyvat.
+                            </p>
+                            <div class="text-center">
+                                <a href="mondstadt.html" target="_blank" class="btn" 
+                                   style="background-color: #77A1D3; color: white; padding: 10px 30px; border-radius: 25px; text-decoration: none; transition: all 0.3s ease; border: none; box-shadow: 0 4px 8px rgba(119, 161, 211, 0.3);">
+                                   Khám phá
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Liyue -->
+                <div class="col-md-6 mb-4">
+                    <div class="region-card" style="background: rgba(255,255,255,0.8); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <div class="region-image" style="position: relative; overflow: hidden; height: 300px;">
+                            <img src="picture/nhamquoc.webp" alt="Liyue" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                            <div class="region-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
+                            </div>
+                            <h3 class="region-title" style="position: absolute; bottom: 20px; left: 20px; color: white; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                                Liyue</h3>
+                        </div>
+                        <div class="region-content" style="padding: 25px;">
+                            <div class="region-info mb-3">
+                                <span class="badge" style="background-color: #F7B733; padding: 8px 15px; border-radius: 20px; font-size: 14px; margin-right: 10px;">Nham Thần</span>
+                                <span class="badge" style="background-color: #FC4A1A; padding: 8px 15px; border-radius: 20px; font-size: 14px;">Cảng Vàng</span>
+                            </div>
+                            <p style="font-size: 16px; line-height: 1.8; color: #2C3E50; margin-bottom: 20px;">
+                                Liyue là vùng đất của thương mại và hợp đồng, được cai quản bởi Nham Thần Morax. 
+                                Với cảnh quan đa dạng từ núi cao đến biển rộng.
+                            </p>
+                            <div class="text-center">
+                                <a href="liyue.html" target="_blank" class="btn" 
+                                   style="background-color: #F7B733; color: white; padding: 10px 30px; border-radius: 25px; text-decoration: none; transition: all 0.3s ease; border: none; box-shadow: 0 4px 8px rgba(247, 183, 51, 0.3);">
+                                   Khám phá
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inazuma -->
+                <div class="col-md-6 mb-4">
+                    <div class="region-card" style="background: rgba(255,255,255,0.8); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <div class="region-image" style="position: relative; overflow: hidden; height: 300px;">
+                            <img src="picture/loiquoc.jpg" alt="Inazuma" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                            <div class="region-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
+                            </div>
+                            <h3 class="region-title" style="position: absolute; bottom: 20px; left: 20px; color: white; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                                Inazuma</h3>
+                        </div>
+                        <div class="region-content" style="padding: 25px;">
+                            <div class="region-info mb-3">
+                                <span class="badge" style="background-color: #9B59B6; padding: 8px 15px; border-radius: 20px; font-size: 14px; margin-right: 10px;">Lôi Thần</span>
+                                <span class="badge" style="background-color: #8E44AD; padding: 8px 15px; border-radius: 20px; font-size: 14px;">Đảo Quốc Vĩnh Hằng</span>
+                            </div>
+                            <p style="font-size: 16px; line-height: 1.8; color: #2C3E50; margin-bottom: 20px;">
+                                Inazuma là quần đảo bị cô lập dưới sự cai trị của Lôi Thần Raiden Shogun. 
+                                Với khí hậu khắc nghiệt và địa hình nguy hiểm.
+                            </p>
+                            <div class="text-center">
+                                <a href="inazuma.html" target="_blank" class="btn" 
+                                   style="background-color: #9B59B6; color: white; padding: 10px 30px; border-radius: 25px; text-decoration: none; transition: all 0.3s ease; border: none; box-shadow: 0 4px 8px rgba(155, 89, 182, 0.3);">
+                                   Khám phá
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sumeru -->
+                <div class="col-md-6 mb-4">
+                    <div class="region-card" style="background: rgba(255,255,255,0.8); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <div class="region-image" style="position: relative; overflow: hidden; height: 300px;">
+                            <img src="picture/thaoquoc.webp" alt="Sumeru" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                            <div class="region-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
+                            </div>
+                            <h3 class="region-title" style="position: absolute; bottom: 20px; left: 20px; color: white; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                                Sumeru</h3>
+                        </div>
+                        <div class="region-content" style="padding: 25px;">
+                            <div class="region-info mb-3">
+                                <span class="badge" style="background-color: #27AE60; padding: 8px 15px; border-radius: 20px; font-size: 14px; margin-right: 10px;">Thảo Thần</span>
+                                <span class="badge" style="background-color: #2ECC71; padding: 8px 15px; border-radius: 20px; font-size: 14px;">Rừng Tri Thức</span>
+                            </div>
+                            <p style="font-size: 16px; line-height: 1.8; color: #2C3E50; margin-bottom: 20px;">
+                                Sumeru là vùng đất của tri thức và trí tuệ, dưới sự bảo hộ của Thảo Thần Nahida. 
+                                Với sự tương phản giữa khu rừng nhiệt đới và sa mạc.
+                            </p>
+                            <div class="text-center">
+                                <a href="sumeru.html" target="_blank" class="btn" 
+                                   style="background-color: #27AE60; color: white; padding: 10px 30px; border-radius: 25px; text-decoration: none; transition: all 0.3s ease; border: none; box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);">
+                                   Khám phá
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phần hệ thống nhiệm vụ -->
+    <div class="container-fluid position-relative p-0">
+        <div class="background-overlay"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('nenphu.jpg'); background-size: cover; background-position: center; filter: blur(8px); opacity: 0.5; z-index: 1;">
+        </div>
+
+        <div class="content" style="position: relative; z-index: 2; padding: 40px 20px;">
+            <h2 class="text-center mb-5" style="color: #2C3E50; font-weight: bold;">Hệ Thống Nhiệm Vụ Đa Dạng</h2>
+
+            <!-- Nhiệm vụ chính -->
+            <div class="quest-section mb-5">
+                <div class="quest-card"
+                    style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <img src="picture/nvchinh.jpg" alt="Main Quest" class="img-fluid"
+                                style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="quest-badge mb-3">
+                                <span class="badge"
+                                    style="background-color: #e74c3c; padding: 8px 20px; border-radius: 20px; font-size: 16px;">Nhiệm
+                                    Vụ Archon</span>
+                            </div>
+                            <h3 style="color: #2C3E50; font-weight: bold;">Nhiệm Vụ Cốt Truyện Chính</h3>
+                            <p style="font-size: 16px; line-height: 1.8;">
+                                Khám phá câu chuyện chính của Genshin Impact thông qua chuỗi nhiệm vụ Archon.
+                                Tìm hiểu về bí ẩn của thế giới Teyvat, về người anh/em song sinh của bạn và
+                                vai trò của bảy vị Archon trong cuộc hành trình này.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Các loại nhiệm vụ khác -->
+            <div class="row">
+                <!-- Nhiệm vụ thế giới -->
+                <div class="col-md-6 mb-4">
+                    <div class="quest-card"
+                        style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 20px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div class="quest-image mb-3" style="height: 200px; overflow: hidden; border-radius: 10px;">
+                            <img src="picture/nvthegioi.jpg" alt="World Quest" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="quest-badge mb-3">
+                            <span class="badge"
+                                style="background-color: #3498db; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm
+                                Vụ Thế Giới</span>
+                        </div>
+                        <h4 style="color: #2C3E50; font-weight: bold;">Khám Phá Thế Giới Mở</h4>
+                        <p style="font-size: 15px; line-height: 1.7;">
+                            Tham gia vào các nhiệm vụ thế giới đa dạng, từ giúp đỡ người dân địa phương
+                            đến khám phá những bí ẩn c xưa. Mỗi nhiệm vụ đều mang đến những câu chuyện thú vị
+                            v phần thưởng hấp dẫn.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Nhiệm vụ nhân vật -->
+                <div class="col-md-6 mb-4">
+                    <div class="quest-card"
+                        style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 20px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div class="quest-image mb-3" style="height: 200px; overflow: hidden; border-radius: 10px;">
+                            <img src="picture/nvnhanvat.png" alt="Character Quest" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="quest-badge mb-3">
+                            <span class="badge"
+                                style="background-color: #9b59b6; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm
+                                Vụ Nhân Vật</span>
+                        </div>
+                        <h4 style="color: #2C3E50; font-weight: bold;">Câu Chuyện Của Các Nhân Vật</h4>
+                        <p style="font-size: 15px; line-height: 1.7;">
+                            Tìm hiểu sâu hơn về câu chuyện của từng nhân vật thông qua các nhiệm vụ cá nhân.
+                            Mỗi nhân vật đều có quá khứ và động cơ riêng, chờ đợi bạn khám phá.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Nhiệm vụ hàng ngày -->
+                <div class="col-md-6 mb-4">
+                    <div class="quest-card"
+                        style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 20px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div class="quest-image mb-3" style="height: 200px; overflow: hidden; border-radius: 10px;">
+                            <img src="picture/nvhangngay.jpg" alt="Daily Quest" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="quest-badge mb-3">
+                            <span class="badge"
+                                style="background-color: #2ecc71; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm
+                                Vụ Hằng Ngày</span>
+                        </div>
+                        <h4 style="color: #2C3E50; font-weight: bold;">Hoạt Động Hàng Ngày</h4>
+                        <p style="font-size: 15px; line-height: 1.7;">
+                            Tham gia các nhiệm vụ hàng ngày để nhận thưởng và tài nguyên quý giá.
+                            Từ việc thu thập nguyên liệu đến tiêu diệt quái vật, luôn có điều gì đó để bạn khám phá mỗi
+                            ngày.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Nhiệm vụ sự kiện -->
+                <div class="col-md-6 mb-4">
+                    <div class="quest-card"
+                        style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 20px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div class="quest-image mb-3" style="height: 200px; overflow: hidden; border-radius: 10px;">
+                            <img src="picture/nvsukien.png" alt="Event Quest"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="quest-badge mb-3">
+                            <span class="badge"
+                                style="background-color: #f1c40f; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm
+                                Vụ Sự Kiện</span>
+                        </div>
+                        <h4 style="color: #2C3E50; font-weight: bold;">Sự Kiện Đặc Biệt</h4>
+                        <p style="font-size: 15px; line-height: 1.7;">
+                            Tham gia các sự kiện giới hạn thời gian với những câu chuyện độc đáo và phần thưởng
+                            đặc biệt. Mỗi sự kiện đều mang đến trải nghiệm mới mẻ và thú vị.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phần thưởng nhiệm vụ -->
+            <div class="rewards-section mt-5">
+                <div class="quest-card"
+                    style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h3 class="text-center mb-4" style="color: #2C3E50; font-weight: bold;">Phần Thưởng Hấp Dẫn</h3>
+                    <div class="row">
+                        <!-- Nguyên Thạch -->
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="reward-item"
+                                style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
+                                <h5 class="mb-3" style="color: #e74c3c; font-weight: bold;">Nguyên Thạch</h5>
+                                <div class="reward-info"
+                                    style="background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 10px;">
+                                    <p class="small mb-2" style="color: #2C3E50; font-weight: 500;">Nhận được từ:</p>
+                                    <ul class="text-left small" style="list-style-type: none; padding-left: 0;">
+                                        <li class="mb-2"><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Nhiệm vụ
+                                            Archon: 30-60</li>
+                                        <li class="mb-2"><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Nhiệm vụ
+                                            thế giới: 20-40</li>
+                                        <li class="mb-2"><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Nhiệm vụ
+                                            hàng ngày: 60</li>
+                                        <li><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Sự kiện: 300-1000
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mora -->
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="reward-item"
+                                style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
+                                <h5 class="mb-3" style="color: #f1c40f; font-weight: bold;">Mora</h5>
+                                <div class="reward-info"
+                                    style="background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 10px;">
+                                    <p class="small mb-2" style="color: #2C3E50; font-weight: 500;">Dùng để:</p>
+                                    <ul class="text-left small" style="list-style-type: none; padding-left: 0;">
+                                        <li class="mb-2"><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Nâng
+                                            cấp nhân vật</li>
+                                        <li class="mb-2"><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Nâng
+                                            cấp vũ khí</li>
+                                        <li class="mb-2"><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Nâng
+                                            cấp thánh di vật</li>
+                                        <li><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Mua vật phẩm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kinh Nghiệm -->
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="reward-item"
+                                style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
+                                <h5 class="mb-3" style="color: #2ecc71; font-weight: bold;">Kinh Nghiệm</h5>
+                                <div class="reward-info"
+                                    style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 10px;">
+                                    <p class="small mb-2" style="color: #2C3E50; font-weight: 500;">Dùng để nâng cấp:
+                                    </p>
+                                    <ul class="text-left small" style="list-style-type: none; padding-left: 0;">
+                                        <li class="mb-2"><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Cấp độ
+                                            nhân vật</li>
+                                        <li class="mb-2"><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Cấp độ
+                                            phiêu lưu</li>
+                                        <li class="mb-2"><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Cấp độ
+                                            hảo cảm</li>
+                                        <li><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Battle Pass</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vật Phẩm -->
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="reward-item"
+                                style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
+                                <h5 class="mb-3" style="color: #9b59b6; font-weight: bold;">Vật Phẩm</h5>
+                                <div class="reward-info"
+                                    style="background: rgba(155, 89, 182, 0.1); padding: 15px; border-radius: 10px;">
+                                    <p class="small mb-2" style="color: #2C3E50; font-weight: 500;">Bao gồm:</p>
+                                    <ul class="text-left small" style="list-style-type: none; padding-left: 0;">
+                                        <li class="mb-2"><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Nguyên
+                                            liệu nâng cấp</li>
+                                        <li class="mb-2"><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Thánh di
+                                            vật</li>
+                                        <li class="mb-2"><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Vũ khí
+                                        </li>
+                                        <li><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Vật phẩm event</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer"
+        style="background: linear-gradient(to right, #1a1c2c, #2d3436); color: white; padding: 60px 0 20px 0;">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="row mb-4">
+                <!-- Liên kết -->
+                <div class="col-md-4">
+                    <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Liên kết hữu ích</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/home" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Trang chủ chính
+                                thức</a></li>
+                        <li class="mb-2"><a href="https://www.hoyolab.com/" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">HoYoLAB</a></li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/download" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tải game</a></li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/news" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tin tức</a></li>
+                    </ul>
+                </div>
+
+                <!-- Hỗ trợ -->
+                <div class="col-md-4">
+                    <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Hỗ trợ người chơi</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-2"><a href="https://www.hoyolab.com/article_pre/1308" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Hướng dẫn người
+                                mới</a></li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/company/privacy" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Chính sách bảo
+                                mật</a></li>
+                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/about-us" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Về chúng tôi</a>
+                        </li>
+                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/contact" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Mạng xã hội -->
+                <div class="col-md-4">
+                    <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Kết nối với chúng tôi</h5>
+                    <div class="social-links" style="display: flex; gap: 15px;">
+                        <a href="https://www.facebook.com/Genshinimpact.vi" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/genshinimpactvi" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@GenshinImpact" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/genshinimpact/" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://discord.com/invite/genshinimpact" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Info Section -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 text-center">
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;">
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+                        <h5 style="color: #74b9ff; font-weight: bold; margin-bottom: 15px;">Thông tin sinh viên thực
+                            hiện</h5>
+                        <div style="color: #dcdde1; font-size: 15px; line-height: 1.8;">
+                            <p style="margin-bottom: 5px;">Họ và tên: Nguyễn Nhật Trường</p>
+                            <p style="margin-bottom: 5px;">MSSV: 110122197</p>
+                            <p style="margin-bottom: 5px;">Lớp: D22TTC</p>
+                            <p style="margin-bottom: 5px;">Đồ án: Thiết kế website giới thiệu game Genshin Impact</p>
+                            <p style="margin-bottom: 5px;">Giảng viên hướng dẫn: Phạm Minh Đương</p>
+                            <p>Trường Đại học Trà Vinh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</html>

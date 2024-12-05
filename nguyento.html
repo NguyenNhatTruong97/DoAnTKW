@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyên Tố trong Genshin Impact</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+         .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #8B4513;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: #5c2807 !important;
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* Hiệu ứng hover cho nút tải game */
+        .btn-warning {
+            border: 2px solid #8B4513;
+            background-color: #FFF2CC;
+            transition: all 0.3s ease;
+        }
+
+        .btn-warning:hover {
+            background-color: #8B4513;
+            color: #FFF2CC !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.2);
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: linear-gradient(to right, #FFF2CC, #FFFAF0);
+                padding: 20px;
+                border-radius: 0 0 15px 15px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .btn-warning {
+                display: block;
+                margin: 10px auto !important;
+                width: fit-content;
+            }
+        }
+
+        /* Style cho các card nguyên tố */
+        .element-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .element-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .element-card h3 {
+            color: #2C3E50;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .element-card h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -8px;
+            left: 25%;
+            background: linear-gradient(to right, #77A1D3, #79CBCA);
+            border-radius: 2px;
+        }
+
+        .element-image {
+            width: 120px;
+            height: 120px;
+            margin: 20px auto;
+            transition: transform 0.3s ease;
+        }
+
+        .element-card:hover .element-image {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .element-card p {
+            color: #34495e;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        /* Style cho bảng phản ứng */
+        .table-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            background: linear-gradient(to right, #77A1D3, #79CBCA);
+            color: white;
+            border: none;
+            padding: 15px;
+        }
+
+        .table td, .table th {
+            padding: 12px;
+            vertical-align: middle;
+            border-color: rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .table tbody tr:hover {
+            background-color: rgba(119, 161, 211, 0.1);
+        }
+
+        /* Style cho phần chi tiết phản ứng */
+        .reaction-details {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .reaction-details ul li {
+            margin-bottom: 15px;
+            color: #2C3E50;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .reaction-details ul li:hover {
+            transform: translateX(10px);
+            color: #3498db;
+        }
+
+        /* Style cho tiêu đề section */
+        .section-title {
+            color: #2C3E50;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(to right, #77A1D3, #79CBCA);
+            border-radius: 2px;
+        }
+
+        /* Style cho công thức tính */
+        pre {
+            background: rgba(44, 62, 80, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Consolas', monospace;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .element-card {
+                padding: 15px;
+            }
+            
+            .element-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .table-container {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Thanh điều hướng -->
+<nav class="navbar navbar-expand-lg" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: linear-gradient(to right, #FFF2CC, #FFFAF0);">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#" style="margin-left: 15px;">
+            <img src="picture/logo.jpg" alt="logo" height="60px">
+        </a>
+
+        <!-- Nút hamburger -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                style="border: none; padding: 8px;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="genshin.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="nhanvat.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nhân vật</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="nguyento.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nguyên tố</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sdk.hoyoverse.com/payment/genshin/index.html#/" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nạp</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://genshin.hoyoverse.com/vi/gift" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Mã quà</a>
+                </li>
+            </ul>
+            <a href="https://genshin.hoyoverse.com/vi/download" target="_blank" class="btn btn-warning" 
+               style="padding: 10px 20px; font-size: 18px; color: #8B4513; text-decoration: none; transition: all 0.3s ease; margin: 10px 15px;">
+                Tải game
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="particles-background"></div>
+<div class="background-lines"></div>
+
+<div class="header">
+</div>
+
+<!--nguyên tố-->
+<div class="container mt-5 pt-5">
+    <h2 class="section-title text-center mb-5">Hệ Thống Nguyên Tố</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="element-card element-anemo">
+                <h3>Phong</h3>
+                <img src="picture/phong.webp" alt="Nguyên tố Phong" class="element-image">
+                <p>Nguyên tố Phong có khả năng tạo ra gió và di chuyển các đối tượng. Nó có thể tương tác với các nguyên tố khác để tạo ra phản ứng khuếch tán mạnh mẽ.</p>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="element-card">
+                <h3>Hỏa</h3>
+                <img src="picture/hoa.webp" alt="Nguyên tố Hỏa" class="element-image"> <!-- Thay thế bằng đường dẫn hình ảnh của bạn -->
+                <p>Nguyên tố Hỏa gây ra sát thương và có kh năng đốt cháy kẻ thù. Nó có thể tạo ra phản ứng cháy nổ khi kết hợp với nguyên tố khác.</p>
+            </div>
+        </div>
+    
+        
+            <div class="col-md-4">
+                <div class="element-card">
+                    <h3>Thảo</h3>
+                    <img src="picture/thao.webp" alt="Nguyên tố Thảo" class="element-image"> <!-- Thay thế bằng đường dẫn hình ảnh của bạn -->
+                    <p>Nguyên tố Thảo có khả năng tương tác với các nguyên tố khác để tạo ra các hiệu ứng đặc biệt, như hồi phục và tăng cường sức mạnh.</p>
+                </div>
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="element-card">
+                <h3>Nham</h3>
+                <img src="picture/nham.webp" alt="Nguyên tố Nham" class="element-image"> <!-- Thay thế bằng đường dẫn hình ảnh của bạn -->
+                <p>Nguyên tố Nham có khả năng tạo ra các tấm chắn và gây sát thương vật lý. Nó có thể tạo ra phản ứng khi kết hợp với hỏa.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="element-card">
+                <h3>Thủy</h3>
+                <img src="picture/thuy.webp" alt="Nguyên tố Thủy" class="element-image"> <!-- Thay thế bằng đường dẫn hình ảnh của bạn -->
+                <p>Nguyên t Thủy có khả năng làm ướt kẻ thù và tạo ra phản ứng với hỏa để gây ra phản ứng cháy.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="element-card">
+                <h3>Lôi</h3>
+                <img src="picture/loi.webp" alt="Nguyên tố Lôi" class="element-image"> <!-- Thay thế bằng đường dẫn hình ảnh của bạn -->
+                <p>Nguyên tố Lôi có khả năng gây ra sát thương điện và có thể tạo ra phản ứng điện khi kết hợp với nước.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="element-card">
+            <h3>Băng - chưa ra mắt</h3>
+            <img src="" alt="Nguyên tố Băng" class="element-image"> <!-- Thay thế bằng đường dẫn hình ảnh của bạn -->
+            <p>Nguyên tố Băng có khả năng làm chậm và đóng băng kẻ thù. Nó có thể tạo ra phản ứng đóng băng khi kết hợp với nước.</p>
+        </div>
+    </div>
+</div>
+    
+
+    <div class="container">
+        <h2 class="section-title text-center my-5">Bảng Phản Ứng Nguyên Tố</h2>
+        <div class="table-container">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th></th>
+                        <th>Hỏa</th>
+                        <th>Thủy</th>
+                        <th>Băng</th>
+                        <th>Lôi</th>
+                        <th>Phong</th>
+                        <th>Nham</th>
+                        <th>Thảo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Hỏa</th>
+                        <td>-</td>
+                        <td>Bốc hơi(x1.5)</td>
+                        <td>Tan chảy(x2)</td>
+                        <td>Quá tải</td>
+                        <td>Giảm kháng</td>
+                        <td>Kết tinh hỏa</td>
+                        <td>Thiêu đốt</td>
+                    </tr>
+                    <tr>
+                        <th>Thủy</th>
+                        <td>Bốc hơi(x2)</td>
+                        <td>-</td>
+                        <td>Đóng băng</td>
+                        <td>Điện cảm</td>
+                        <td>Giảm kháng</td>
+                        <td>Kết tinh thủy</td>
+                        <td>Sum suê</td>
+                    </tr>
+                    <tr>
+                        <th>Băng</th>
+                        <td>Tan chảy(x1.5)</td>
+                        <td>Đóng băng</td>
+                        <td>-</td>
+                        <td>Siêu dẫn</td>
+                        <td>Giảm kháng</td>
+                        <td>Kết tinh băng</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th>Lôi</th>
+                        <td>Quá tải</td>
+                        <td>Điện cảm</td>
+                        <td>Siêu dẫn</td>
+                        <td>-</td>
+                        <td>Giảm kháng</td>
+                        <td>Kết tinh lôi</td>
+                        <td>Sinh trưởng</td>
+                    </tr>
+                    <tr>
+                        <th>Phong</th>
+                        <td>Khuếch tán hỏa</td>
+                        <td>Khuếch tán thủy</td>
+                        <td>Khuếch tán băng</td>
+                        <td>Khuếch tán lôi</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th>Nham</th>
+                        <td>Kết tinh hỏa</td>
+                        <td>Kết tinh thủy</td>
+                        <td>Kết tinh băng</td>
+                        <td>Kết tinh lôi</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th>Thảo</th>
+                        <td>Thiêu đốt</td>
+                        <td>Sum suê</td>
+                        <td>-</td>
+                        <td>Sinh trưởng</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+
+    <!--chi tiết phản ứng-->
+    <div class="container">
+        <h2 class="section-title text-center my-5">Phản Ứng Đặc Biệt Với Nguyên Tố Thảo</h2>
+        <div class="reaction-details">
+            <ul style="text-align: center; list-style-type: none;">
+                <li>Thiêu Đốt (Burning): Hỏa gặp Thảo hoặc ngược lại.</li>
+                <li>Sinh Trưởng (Quicken): Khi Thảo gặp Lôi hoặc ngược lại.</li>
+                <li>Tăng Cường (Aggravate): Khi Lôi đánh vào mục tiêu đang có Sinh Trưởng.</li>
+                <li>Lan Tràn (Spread): Khi Thảo đánh vào mục tiêu đang có Sinh Trưởng.</li>
+                <li>Sum Suê (Bloom): Khi Thảo gặp Thủy hoặc ngược lại, tạo ra Hạt Nhân Thảo trên mặt đất.</li>
+                <li>Nở Rộ (Hyperbloom): Khi Hạt Nhân Thảo trên mặt đất gặp Lôi, nó sẽ lao vào quái gây sát thương.</li>
+                <li>Bung Tỏa (Burgeon): Khi Hạt Nhân Thảo trên mặt đất gặp Hỏa, nó sẽ nổ tung gây damage AOE (hiệu ứng sát thương diện rộng).</li>
+            </ul>
+            <img src="picture/phanungthao.jpg" alt="" style="margin-left: 120px;">
+        </div>
+    </div>
+
+    <!--Hướng dẫn sát thương nguyên tố-->
+    <div class="container">
+        <h2 class="section-title text-center my-5">HƯỚNG DẪN TÍNH SÁT THƯƠNG NGUYÊN TỐ</h2>
+        <div class="reaction-details">
+            <p>Sát thương phản ứng nguyên tố chủ yếu phụ thuộc vào tinh thông nguyên tố và level nhân vật.
+               Khi kẻ địch áp dụng kháng thuộc tính, sát thương phản ứng sẽ bị giảm xuống. Dưới đây là công thức để tính sát thương phản ứng nguyên tố:</p>
+            <strong>Sát thương cuối = A (dựa trên level nhân vật) x (100% + % tăng sát thương phản ứng nguyên tố từ tinh thông nguyên tố của nhân vật kích hoạt)
+                <ul>Ví dụ:
+                    <li> Quá tải: 100% x sát thương cuối.</li>
+                   <li>Nhiễm điện: 60% x sát thương cuối.</li>
+                   <li>Đông cứng: 75% x sát thương cuối.</li>
+                   <li>Siêu dẫn: 25% x sát thương cuối.</li>
+                </ul>
+            </strong>
+            <p>Tinh thông nguyên tố là một chỉ số quan trọng trong Genshin Impact. Nhờ đó, người chơi có thể tăng sát thương nguyên tố nhanh chóng và tăng độ bền của khiên từ nguyên t Nham. </p>
+            <h5>Công thức tính tinh thông nguyên tố:</h5>
+            <pre>
+                 X = 0.197 x tinh thông x e^-(0.00063 x tinh thông)
+                 Y = 0.472 x tinh thông x e^-(0.00063 x tinh thông)
+                 Z = 0.315 x tinh thông x e^-(0.00063 x tinh thông)
+            </pre>
+            <pre>Trong đó:
+                X là % sát thương của Bốc hơi và tan chảy
+                Y là % sát thương của Quá tải, siêu dẫn, khuếch tán
+                Z là khả năng hấp thụ sát thương mà khiên tạo ra
+                </pre>
+        </div>
+    </div>
+
+    <!-- Phần Video Tham Khảo -->
+    <div class="container mb-5">
+        <h2 class="section-title text-center my-5">Video Tham Khảo</h2>
+        
+        <!-- Tabs cho danh mục -->
+        <ul class="nav nav-tabs justify-content-center mb-4" id="videoTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab" aria-controls="basic" aria-selected="true"
+                        style="color: #2C3E50; font-weight: bold;">
+                    Phản ứng nguyên tố cơ bản
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="dendro-tab" data-bs-toggle="tab" data-bs-target="#dendro" type="button" role="tab" aria-controls="dendro" aria-selected="false"
+                        style="color: #2C3E50; font-weight: bold;">
+                    Phản ứng nguyên tố Thảo đặc biệt
+                </button>
+            </li>
+        </ul>
+
+        <!-- Nội dung video -->
+        <div class="tab-content" id="videoTabContent">
+            <!-- Video phản ứng cơ bản -->
+            <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="card" style="background: rgba(255,255,255,0.9); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Hướng dẫn phản ứng nguyên tố cơ bản</h5>
+                                <div style="position: relative; padding-bottom: 75%; height: 0; overflow: hidden;">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/BaaiNX7yQAs?si=UwF-NwwB53IMhtom" 
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video phản ứng Thảo -->
+            <div class="tab-pane fade" id="dendro" role="tabpanel" aria-labelledby="dendro-tab">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="card" style="background: rgba(255,255,255,0.9); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Hướng dẫn phản ứng nguyên tố Thảo đặc biệt</h5>
+                                <div style="position: relative; padding-bottom: 75%; height: 0; overflow: hidden;">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/tD0oXtVFNEA?si=c3wyQJgE0nwHfhP9" 
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Footer -->
+    <footer class="footer"
+    style="background: linear-gradient(to right, #1a1c2c, #2d3436); color: white; padding: 60px 0 20px 0;">
+    <div class="container">
+        <!-- Main Footer Content -->
+        <div class="row mb-4">
+            <!-- Liên kết -->
+            <div class="col-md-4">
+                <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Liên kết hữu ích</h5>
+                <ul style="list-style: none; padding: 0;">
+                    <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/home" target="_blank"
+                            style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Trang chủ chính
+                            thức</a></li>
+                    <li class="mb-2"><a href="https://www.hoyolab.com/" target="_blank"
+                            style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">HoYoLAB</a></li>
+                    <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/download" target="_blank"
+                            style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tải game</a></li>
+                    <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/news" target="_blank"
+                            style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tin tức</a></li>
+                </ul>
+            </div>
+
+            <!-- Hỗ trợ -->
+            <div class="col-md-4">
+                <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Hỗ trợ người chơi</h5>
+                <ul style="list-style: none; padding: 0;">
+                    <li class="mb-2"><a href="https://www.hoyolab.com/article_pre/1308" target="_blank"
+                            style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Hướng dẫn người
+                            mới</a></li>
+                    <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/company/privacy" target="_blank"
+                            style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Chính sách bảo
+                            mật</a></li>
+                    <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/about-us" target="_blank"
+                            style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Về chúng tôi</a>
+                    </li>
+                    <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/contact" target="_blank"
+                            style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Liên hệ</a></li>
+                </ul>
+            </div>
+
+            <!-- Mạng x hội -->
+            <div class="col-md-4">
+                <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Kết nối với chúng tôi</h5>
+                <div class="social-links" style="display: flex; gap: 15px;">
+                    <a href="https://www.facebook.com/Genshinimpact.vi" target="_blank"
+                        style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/genshinimpactvi" target="_blank"
+                        style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@GenshinImpact" target="_blank"
+                        style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/genshinimpact/" target="_blank"
+                        style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://discord.com/invite/genshinimpact" target="_blank"
+                        style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                            class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Info Section -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 text-center">
+                <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;">
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: #74b9ff; font-weight: bold; margin-bottom: 15px;">Thông tin sinh viên thực
+                        hiện</h5>
+                    <div style="color: #dcdde1; font-size: 15px; line-height: 1.8;">
+                        <p style="margin-bottom: 5px;">Họ và tên: Nguyễn Nhật Trường</p>
+                        <p style="margin-bottom: 5px;">MSSV: 110122197</p>
+                        <p style="margin-bottom: 5px;">Lớp: D22TTC</p>
+                        <p style="margin-bottom: 5px;">Đồ án: Thiết kế website giới thiệu game Genshin Impact</p>
+                        <p style="margin-bottom: 5px;">Giảng viên hướng dẫn: Phạm Minh Đương</p>
+                        <p>Trường Đại học Trà Vinh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

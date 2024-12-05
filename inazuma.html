@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inazuma - Đảo Quốc Vĩnh Hằng | Genshin Impact</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+</head>
+
+<style>
+    .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #8B4513;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: #5c2807 !important;
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+    </style>
+
+
+    <style>
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-section .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-section .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Section Styles */
+        .section-title {
+            color: #2C3E50;
+            font-weight: bold;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #77A1D3, #79CBCA);
+        }
+
+        /* Landmark Cards */
+        .landmark-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .landmark-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .landmark-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .landmark-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .landmark-card h4 {
+            color: #2C3E50;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .landmark-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Character Slider */
+        .character-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .character-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .character-slider::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .character-slider::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .character-slider::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .character-card {
+            flex: 0 0 300px;
+            margin: 0 15px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .character-image {
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .character-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .character-info {
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .character-info h5 {
+            margin: 10px 0;
+            color: #2C3E50;
+            font-weight: bold;
+        }
+
+        .character-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .vision-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: white;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+        }
+</style>
+<body>
+
+    <!-- Background Effects -->
+    <nav class="navbar navbar-expand-lg" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: linear-gradient(to right, #FFF2CC, #FFFAF0);">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#" style="margin-left: 15px;">
+                <img src="picture/logo.jpg" alt="logo" height="60px">
+            </a>
+    
+            <!-- Nút hamburger -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                    style="border: none; padding: 8px;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Menu items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="genshin.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nhanvat.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nhân vật</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nguyento.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nguyên tố</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://sdk.hoyoverse.com/payment/genshin/index.html#/" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nạp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://genshin.hoyoverse.com/vi/gift" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Mã quà</a>
+                    </li>
+                </ul>
+                <a href="https://genshin.hoyoverse.com/vi/download" target="_blank" class="btn btn-warning" 
+                   style="padding: 10px 20px; font-size: 18px; color: #8B4513; text-decoration: none; transition: all 0.3s ease; margin: 10px 15px;">
+                    Tải game
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero-section" style="background-image: url('picture/loiquoc.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="content">
+                <h1>Inazuma</h1>
+                <p>Quần đảo của Vĩnh Hằng, nơi theo đuổi sự bất biến</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Giới thiệu -->
+    <section class="py-5" id="explore">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="section-title">Đất Nước của Vĩnh Hằng</h2>
+                    <p class="lead">Inazuma là quần đảo được Lôi Thần Raiden Ei bảo hộ, nơi theo đuổi lý tưởng vĩnh cửu.</p>
+                    <p>Được biết đến như Quần Đảo Sấm Sét, Inazuma là một quốc gia khép kín với những truyền thống võ sĩ đạo lâu đời. Dưới sự cai trị của Raiden Shogun, Inazuma theo đuổi chính sách "Săn lùng Vision" nhằm đạt được vĩnh hằng.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="image-container">
+                        <img src="picture/thanhinazuma.webp" alt="Inazuma City" class="img-fluid rounded shadow">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Địa danh nổi tiếng -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Địa Danh Nổi Tiếng</h2>
+            <div class="row">
+                <!-- Thành Inazuma -->
+                <div class="col-md-4 mb-4">
+                    <div class="landmark-card">
+                        <div class="image-container">
+                            <img src="picture/thanhinazuma.webp" alt="Inazuma City" class="img-fluid rounded">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-body">
+                            <h4>Thành Inazuma</h4>
+                            <p>Thủ phủ của Inazuma, nơi đặt trụ sở của Tenshukaku và các cơ quan chính quyền.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Đền Narukami -->
+                <div class="col-md-4 mb-4">
+                    <div class="landmark-card">
+                        <img src="picture/dennarukami.webp" alt="Grand Narukami Shrine" class="img-fluid rounded mb-3">
+                        <h4>Đền Narukami</h4>
+                        <p>Ngôi đền thiêng liêng trên đảo Narukami, nơi thờ phụng thần linh.</p>
+                    </div>
+                </div>
+
+                <!-- Đảo Yashiori -->
+                <div class="col-md-4 mb-4">
+                    <div class="landmark-card">
+                        <img src="picture/yashiori.webp" alt="Yashiori Island" class="img-fluid rounded mb-3">
+                        <h4>Đảo Yashiori</h4>
+                        <p>Hòn đảo mang dấu tích của trận chiến giữa Raiden Shogun và Orobashi.</p>
+                    </div>
+                </div>
+
+                <!-- Sangonomiya -->
+                <div class="col-md-4 mb-4">
+                    <div class="landmark-card">
+                        <img src="picture/watasumi.webp" alt="Sangonomiya Shrine" class="img-fluid rounded mb-3">
+                        <h4>Đảo Watatsumi</h4>
+                        <p>Đảo san hô xinh đẹp, quê hương của người dân Sangonomiya và nơi thờ phụng Orobashi.</p>
+                    </div>
+                </div>
+
+                <!-- Tatarasuna -->
+                <div class="col-md-4 mb-4">
+                    <div class="landmark-card">
+                        <img src="picture/tatarasuna.webp " alt="Tatarasuna" class="img-fluid rounded mb-3">
+                        <h4>Tatarasuna</h4>
+                        <p>Khu lò rèn lớn nhất Inazuma, nơi sản xuất vũ khí và công cụ.</p>
+                    </div>
+                </div>
+
+                <!-- Seirai Island -->
+                <div class="col-md-4 mb-4">
+                    <div class="landmark-card">
+                        <img src="picture/seirai.webp" alt="Seirai Island" class="img-fluid rounded mb-3">
+                        <h4>Đảo Seirai</h4>
+                        <p>Hòn đảo bị tàn phá bởi sấm sét vĩnh cửu, nơi từng diễn ra những thí nghiệm nguy hiểm.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nhân vật nổi tiếng -->
+    <section class="character-carousel">
+        <h2 class="section-title text-center mb-5">Một Số Nhân Vật Tiêu Biểu</h2>
+        <div class="character-slider">
+            <!-- Raiden Shogun -->
+            <div class="character-card">
+                <div class="character-image">
+                    <img src="picture/raiden.webp" alt="Raiden Shogun">
+                </div>
+                <div class="character-info">
+                    <span class="vision-badge" style="background: #A64EFF;">Lôi</span>
+                    <h5>Raiden Shogun</h5>
+                    <p class="small">Lôi Thần, người cai trị Inazuma</p>
+                </div>
+            </div>
+
+            <!-- Yae Miko -->
+            <div class="character-card">
+                <div class="character-image">
+                    <img src="picture/yaemiko.webp" alt="Yae Miko">
+                </div>
+                <div class="character-info">
+                    <span class="vision-badge" style="background: #A64EFF;">Lôi</span>
+                    <h5>Yae Miko</h5>
+                    <p class="small">Guuji của đền Narukami</p>
+                </div>
+            </div>
+
+            <!-- Ayaka -->
+            <div class="character-card">
+                <div class="character-image">
+                    <img src="picture/ayaka.webp" alt="Kamisato Ayaka">
+                </div>
+                <div class="character-info">
+                    <span class="vision-badge" style="background: #77A1D3;">Băng</span>
+                    <h5>Kamisato Ayaka</h5>
+                    <p class="small">Công chúa Bạch Tuyết của nhà Kamisato</p>
+                </div>
+            </div>
+
+            <!-- Ayato -->
+            <div class="character-card">
+                <div class="character-image">
+                    <img src="picture/ayato.webp" alt="Kamisato Ayato">
+                </div>
+                <div class="character-info">
+                    <span class="vision-badge" style="background: #3498db;">Thủy</span>
+                    <h5>Kamisato Ayato</h5>
+                    <p class="small">Trưởng tộc nhà Kamisato</p>
+                </div>
+            </div>
+
+            <!-- Kokomi -->
+            <div class="character-card">
+                <div class="character-image">
+                    <img src="picture/kokomi.webp" alt="Sangonomiya Kokomi">
+                </div>
+                <div class="character-info">
+                    <span class="vision-badge" style="background: #3498db;">Thủy</span>
+                    <h5>Sangonomiya Kokomi</h5>
+                    <p class="small">Nữ tư tế của đảo Watatsumi</p>
+                </div>
+            </div>
+
+            <!-- Kazuha -->
+            <div class="character-card">
+                <div class="character-image">
+                    <img src="picture/kazuha.webp" alt="Kaedehara Kazuha">
+                </div>
+                <div class="character-info">
+                    <span class="vision-badge" style="background: #6bffa4;">Phong</span>
+                    <h5>Kaedehara Kazuha</h5>
+                    <p class="small">Samurai phiêu bạt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer"
+        style="background: linear-gradient(to right, #1a1c2c, #2d3436); color: white; padding: 60px 0 20px 0;">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="row mb-4">
+                <!-- Liên kết -->
+                <div class="col-md-4">
+                    <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Liên kết hữu ích</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/home" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Trang chủ
+                                chính thức</a></li>
+                        <li class="mb-2"><a href="https://www.hoyolab.com/" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">HoYoLAB</a>
+                        </li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/download" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tải
+                                game</a></li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/news" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tin
+                                tức</a></li>
+                    </ul>
+                </div>
+
+                <!-- Hỗ trợ -->
+                <div class="col-md-4">
+                    <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Hỗ trợ người chơi</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-2"><a href="https://www.hoyolab.com/article_pre/1308" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Hướng dẫn
+                                người mới</a></li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/company/privacy" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Chính
+                                sách bảo mật</a></li>
+                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/about-us" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Về chúng
+                                tôi</a></li>
+                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/contact" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Liên
+                                hệ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Mạng xã hội -->
+                <div class="col-md-4">
+                    <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Kết nối với chúng tôi
+                    </h5>
+                    <div class="social-links" style="display: flex; gap: 15px;">
+                        <a href="https://www.facebook.com/Genshinimpact.vi" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/genshinimpactvi" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@GenshinImpact" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/genshinimpact/" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://discord.com/invite/genshinimpact" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Info Section -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 text-center">
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;">
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+                        <h5 style="color: #74b9ff; font-weight: bold; margin-bottom: 15px;">Thông tin sinh viên
+                            thực hiện</h5>
+                        <div style="color: #dcdde1; font-size: 15px; line-height: 1.8;">
+                            <p style="margin-bottom: 5px;">Họ và tên: Nguyễn Nhật Trường</p>
+                            <p style="margin-bottom: 5px;">MSSV: 110122197</p>
+                            <p style="margin-bottom: 5px;">Lớp: D22TTC</p>
+                            <p style="margin-bottom: 5px;">Đồ án: Thiết kế website giới thiệu game Genshin
+                                Impact</p>
+                            <p style="margin-bottom: 5px;">Giảng viên hướng dẫn: Phạm Minh Đương</p>
+                            <p>Trường Đại học Trà Vinh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script></body>
+
+</html>

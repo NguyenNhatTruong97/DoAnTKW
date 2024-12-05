@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhân Vật Genshin Impact</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Thêm vào sau các link CSS khác -->
+    <style>
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #8B4513;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: #5c2807 !important;
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+       
+        /* Style cho phần tìm kiếm */
+        .search-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            margin-top: 100px;
+        }
+
+        .form-label {
+            color: #2C3E50;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus {
+            border-color: #77A1D3;
+            box-shadow: 0 0 0 0.2rem rgba(119, 161, 211, 0.25);
+        }
+
+        .search-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .search-buttons button {
+            padding: 10px 30px;
+            margin: 0 10px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #77A1D3, #79CBCA);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(119, 161, 211, 0.4);
+        }
+
+        .btn-outline-secondary:hover {
+            transform: translateY(-2px);
+            background-color: #e9ecef;
+        }
+
+        /* Style cho kết quả tìm kiếm */
+        .search-result-heading {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+
+        .search-result-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #77A1D3, #79CBCA);
+            border-radius: 2px;
+        }
+
+        /* Style cho card nhân vật */
+        .character {
+            margin-bottom: 30px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-img-top {
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 20px;
+            background: white;
+        }
+
+        .card-title {
+            color: #2C3E50;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Style cho tiêu đề phân loại nguyên tố */
+        h3.text-center {
+            color: #2C3E50;
+            font-weight: bold;
+            margin: 40px 0 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h3.text-center::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #77A1D3, #79CBCA);
+            border-radius: 2px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .search-section {
+                padding: 20px;
+                margin-top: 80px;
+            }
+
+            .search-buttons button {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .card-img-top {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+   <!-- Thanh điều hướng -->
+   <nav class="navbar navbar-expand-lg" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: linear-gradient(to right, #FFF2CC, #FFFAF0);">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#" style="margin-left: 15px;">
+            <img src="picture/logo.jpg" alt="logo" height="60px">
+        </a>
+
+        <!-- Nút hamburger -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                style="border: none; padding: 8px;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="genshin.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="nhanvat.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nhân vật</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="nguyento.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nguyên tố</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sdk.hoyoverse.com/payment/genshin/index.html#/" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nạp</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://genshin.hoyoverse.com/vi/gift" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Mã quà</a>
+                </li>
+            </ul>
+            <a href="https://genshin.hoyoverse.com/vi/download" target="_blank" class="btn btn-warning" 
+               style="padding: 10px 20px; font-size: 18px; color: #8B4513; text-decoration: none; transition: all 0.3s ease; margin: 10px 15px;">
+                Tải game
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <div class="container mt-5">
+
+        <div class="search-section container">
+            <form id="searchForm" class="search-form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="element" class="form-label">Nguyên Tố</label>
+                            <select class="form-select" id="element">
+                                <option value="">Tất cả nguyên tố</option>
+                                <option value="Phong">Phong</option>
+                                <option value="Nham">Nham</option>
+                                <option value="Lôi">Lôi</option>
+                                <option value="Thảo">Thảo</option>
+                                <option value="Thủy">Thủy</option>
+                                <option value="Hỏa">Hỏa</option>
+                                <option value="Băng">Băng</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="weapon" class="form-label">Vũ Khí</label>
+                            <select class="form-select" id="weapon">
+                                <option value="">Tất cả vũ khí</option>
+                                <option value="Kiếm đơn">Kiếm đơn</option>
+                                <option value="Trọng kiếm">Trọng kiếm</option>
+                                <option value="Vũ khí cán dài">Vũ khí cán dài</option>
+                                <option value="Cung">Cung</option>
+                                <option value="Pháp khí">Pháp khí</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-buttons">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Tìm Kiếm
+                    </button>
+                    <button type="reset" class="btn btn-outline-secondary">
+                        <i class="fas fa-redo"></i> Đặt Lại
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <h2 class="search-result-heading text-center" style="color: #2C3E50; margin: 30px 0;">Kết Quả Tìm Kiếm</h2>
+        <div id="result" class="row">
+            <!-- Nhân vật hệ Phong -->
+            <h3 class="text-center">Hệ: Phong</h3>
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Cung">
+                <div class="card"
+                    style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;"
+                    onmouseover="this.style.transform='translateY(-15px) scale(1.05)'; 
+                                this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)';
+                                this.style.background='linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))';
+                                this.querySelector('.element-text').style.background='linear-gradient(45deg, #77A1D3, #79CBCA)';
+                                this.querySelector('.element-text').style.webkitBackgroundClip='text';
+                                this.querySelector('.element-text').style.color='transparent';
+                                this.querySelector('.weapon-text').style.background='linear-gradient(45deg, #FFB88C, #FF9A9E)';
+                                this.querySelector('.weapon-text').style.webkitBackgroundClip='text';
+                                this.querySelector('.weapon-text').style.color='transparent'"
+                    onmouseout="this.style.transform='translateY(0) scale(1)'; 
+                               this.style.boxShadow='none';
+                               this.style.background='white';
+                               this.querySelector('.element-text').style.background='none';
+                               this.querySelector('.element-text').style.color='#77A1D3';
+                               this.querySelector('.weapon-text').style.background='none';
+                               this.querySelector('.weapon-text').style.color='#79CBCA'">
+                    <img src="picture/venti.webp" class="card-img-top" alt="Venti" 
+                        style="transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 1;"
+                        onmouseover="this.style.transform='scale(1.15)'; this.style.filter='brightness(1.1) contrast(1.1)'"
+                        onmouseout="this.style.transform='scale(1)'; this.style.filter='none'">
+                    <div class="card-body">
+                        <h5 class="card-title" style="position: relative; display: inline-block; transition: all 0.3s ease;">
+                            Venti
+                            <span style="position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; 
+                                       background: linear-gradient(90deg, #77A1D3, #79CBCA, #77A1D3); 
+                                       transition: width 0.5s ease; background-size: 200% 100%;"
+                                 onmouseover="this.style.width='100%'; this.style.backgroundPosition='right center'"
+                                 onmouseout="this.style.width='0'; this.style.backgroundPosition='left center'"></span>
+                        </h5>
+                        <p class="card-text" style="opacity: 0.8; transition: all 0.3s ease;"
+                           onmouseover="this.style.opacity='1'; this.style.transform='translateX(10px)'"
+                           onmouseout="this.style.opacity='0.8'; this.style.transform='translateX(0)'">
+                            <span class="element-text" style="font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;">
+                                Hệ: <span style="background: linear-gradient(45deg, #77A1D3, #79CBCA); -webkit-background-clip: text; color: transparent;">Phong</span>
+                            </span> 
+                            | 
+                            <span class="weapon-text" style="font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;">
+                                Vũ khí: <span style="background: linear-gradient(45deg, #FFB88C, #FF9A9E); -webkit-background-clip: text; color: transparent;">Cung</span>
+                            </span>
+                        </p>
+                        <div class="card-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+                                                        background: linear-gradient(135deg, rgba(119,161,211,0.1), rgba(255,184,140,0.1));
+                                                        opacity: 0; transition: opacity 0.5s ease;
+                                                        pointer-events: none;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/jean.webp" class="card-img-top" alt="Jean">
+                    <div class="card-body">
+                        <h5 class="card-title">Jean</h5>
+                        <p class="card-text">Hệ: Phong | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/kazuha.webp" class="card-img-top" alt="Kazuha">
+                    <div class="card-body">
+                        <h5 class="card-title">Kazuha</h5>
+                        <p class="card-text">Hệ: Phong | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/xianyun.webp" class="card-img-top" alt="Xianyun">
+                    <div class="card-body">
+                        <h5 class="card-title">Xianyun</h5>
+                        <p class="card-text">Hệ: Phong | Vũ khí: Pháp khí</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/sucrose.webp" class="card-img-top" alt="Sucrose">
+                    <div class="card-body">
+                        <h5 class="card-title">Sucrose</h5>
+                        <p class="card-text">Hệ: Phong | Vũ khí: Pháp Khí </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Vũ khí cán dài">
+                <div class="card">
+                    <img src="picture/xiao.webp" class="card-img-top" alt="xiao">
+                    <div class="card-body">
+                        <h5 class="card-title">Xiao</h5>
+                        <p class="card-text">Hệ: Phong | Vũ khí: Vũ khí cán dài</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nhân vật hệ Nham -->
+            <h3 class="text-center">Hệ: Nham</h3>
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/albedo.webp" class="card-img-top" alt="Albedo">
+                    <div class="card-body">
+                        <h5 class="card-title">Albedo</h5>
+                        <p class="card-text">Hệ: Nham | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/ningguang.webp" class="card-img-top" alt="Ningguang">
+                    <div class="card-body">
+                        <h5 class="card-title">Ningguang</h5>
+                        <p class="card-text">Hệ: Nham | Vũ khí: Pháp khí</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Trọng kiếm">
+                <div class="card">
+                    <img src="picture/itto.webp" class="card-img-top" alt="Itto">
+                    <div class="card-body">
+                        <h5 class="card-title">Itto</h5>
+                        <p class="card-text">Hệ: Nham | Vũ khí: Trọng kiếm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Vũ khí cán dài">
+                <div class="card">
+                    <img src="picture/zhongli.webp" class="card-img-top" alt="zhongli">
+                    <div class="card-body">
+                        <h5 class="card-title">Zhongli</h5>
+                        <p class="card-text">Hệ: Nham | Vũ khí: Vũ khí cán dài</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Trọng kiếm">
+                <div class="card">
+                    <img src="picture/navia.webp" class="card-img-top" alt="Navia">
+                    <div class="card-body">
+                        <h5 class="card-title">Navia</h5>
+                        <p class="card-text">Hệ: Nham | Vũ khí: Trọng kiếm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="kiếm đơn">
+                <div class="card">
+                    <img src="picture/xilonen.webp" class="card-img-top" alt="xilonen">
+                    <div class="card-body">
+                        <h5 class="card-title">Xilonen</h5>
+                        <p class="card-text">Hệ: Nham | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nhân vật hệ Lôi -->
+            <h3 class="text-center">Hệ: Lôi</h3>
+            <div class="col-md-4 mb-4 character" data-element="L��i" data-weapon="Vũ khí cán dài">
+                <div class="card">
+                    <img src="picture/cyno.webp" class="card-img-top" alt="Cyno">
+                    <div class="card-body">
+                        <h5 class="card-title">Cyno</h5>
+                        <p class="card-text">Hệ: Lôi | Vũ khí: Vũ khí cán dài</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Vũ khí cán dài">
+                <div class="card">
+                    <img src="picture/raiden.webp" class="card-img-top" alt="Raiden Shogun">
+                    <div class="card-body">
+                        <h5 class="card-title">Raiden Shogun</h5>
+                        <p class="card-text">Hệ: Lôi | Vũ khí: Vũ khí cán dài</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/yaemiko.webp" class="card-img-top" alt="Miko">
+                    <div class="card-body">
+                        <h5 class="card-title">Yae Miko</h5>
+                        <p class="card-text">Hệ: Lôi | Vũ khí: Pháp khí</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/clorinde.webp" class="card-img-top" alt="Clorinde">
+                    <div class="card-body">
+                        <h5 class="card-title">Clorinde</h5>
+                        <p class="card-text">Hệ: Lôi | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="kiếm đơn">
+                <div class="card">
+                    <img src="picture/keqing.webp" class="card-img-top" alt="Keqing">
+                    <div class="card-body">
+                        <h5 class="card-title">Keqing</h5>
+                        <p class="card-text">Hệ: Lôi | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Cung">
+                <div class="card">
+                    <img src="picture/sara.webp" class="card-img-top" alt="sara">
+                    <div class="card-body">
+                        <h5 class="card-title">Kuju Sara</h5>
+                        <p class="card-text">Hệ: Lôi | Vũ khí: Cung</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nhân vật hệ Thảo -->
+            <h3 class="text-center">Hệ: Thảo</h3>
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/nahida.webp" class="card-img-top" alt="Nahida">
+                    <div class="card-body"
+                        <h5 class="card-title">Nahida</h5>
+                        <p class="card-text">Hệ: Thảo | Vũ khí: Pháp Khí</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Cung">
+                <div class="card">
+                    <img src="picture/tighnari.webp" class="card-img-top" alt="Tighnari">
+                    <div class="card-body">
+                        <h5 class="card-title">Tighnari</h5>
+                        <p class="card-text">Hệ: Thảo | Vũ khí: Cung</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Cung">
+                <div class="card">
+                    <img src="picture/collei.webp" class="card-img-top" alt="Collei">
+                    <div class="card-body">
+                        <h5 class="card-title">Collei</h5>
+                        <p class="card-text">Hệ: Thảo | Vũ khí: Cung</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Trọng kiếm">
+                <div class="card">
+                    <img src="picture/kinich.webp" class="card-img-top" alt="kinich">
+                    <div class="card-body">
+                        <h5 class="card-title">Kinich</h5>
+                        <p class="card-text">Hệ: Thảo | Vũ khí: Trọng Kiếm
+                        <p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/alhaitham.webp" class="card-img-top" alt="Alhaitham">
+                    <div class="card-body">
+                        <h5 class="card-title">Alhaitham</h5>
+                        <p class="card-text">Hệ: Thảo | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/baizhu.webp" class="card-img-top" alt="baizhu">
+                    <div class="card-body">
+                        <h5 class="card-title">Baizhu</h5>
+                        <p class="card-text">Hệ: Thảo | Vũ khí: Pháp khí</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nhân vật hệ Hỏa -->
+            <h3 class="text-center">Hệ: Hỏa</h3>
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Vũ khí cán dài">
+                <div class="card">
+                    <img src="picture/hutao.webp" class="card-img-top" alt="Hu Tao">
+                    <div class="card-body">
+                        <h5 class="card-title">Hu Tao</h5>
+                        <p class="card-text">Hệ: Hỏa | Vũ khí: Vũ khí cán dài</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="kiếm đơn">
+                <div class="card">
+                    <img src="picture/bennett.webp" class="card-img-top" alt="bennett">
+                    <div class="card-body">
+                        <h5 class="card-title">Bennett</h5>
+                        <p class="card-text">Hệ: Hỏa | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Trọng kiếm">
+                <div class="card">
+                    <img src="picture/diluc.webp" class="card-img-top" alt="Diluc">
+                    <div class="card-body">
+                        <h5 class="card-title">Diluc</h5>
+                        <p class="card-text">Hệ: Hỏa | Vũ khí: Trọng kiếm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="vũ khí cán dài">
+                <div class="card">
+                    <img src="picture/xiangling.webp" class="card-img-top" alt="Xiangling">
+                    <div class="card-body">
+                        <h5 class="card-title">Xiangling</h5>
+                        <p class="card-text">Hệ: Hỏa | Vũ khí: Vũ khí cán dài</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/klee.webp" class="card-img-top" alt="Klee">
+                    <div class="card-body">
+                        <h5 class="card-title">Klee</h5>
+                        <p class="card-text">Hệ: Hỏa | Vũ khí: Pháp khí</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Cung">
+                <div class="card">
+                    <img src="picture/amber.webp" class="card-img-top" alt="Amber">
+                    <div class="card-body">
+                        <h5 class="card-title">Amber</h5>
+                        <p class="card-text">Hệ: Hỏa | Vũ khí: Cung</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nhân vật hệ Băng -->
+            <h3 class="text-center">Hệ: Băng</h3>
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Cung">
+                <div class="card">
+                    <img src="picture/ganyu.webp" class="card-img-top" alt="Ganyu">
+                    <div class="card-body">
+                        <h5 class="card-title">Ganyu</h5>
+                        <p class="card-text">Hệ: Băng | Vũ khí: Cung</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/eula.webp" class="card-img-top" alt="Eula">
+                    <div class="card-body">
+                        <h5 class="card-title">Eula</h5>
+                        <p class="card-text">Hệ: Băng | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Bng" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/ayaka.webp" class="card-img-top" alt="Kiếm đơn">
+                    <div class="card-body">
+                        <h5 class="card-title">Ayaka</h5>
+                        <p class="card-text">Hệ: Băng | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/wriothhesley.webp" class="card-img-top" alt="wriothhesley">
+                    <div class="card-body">
+                        <h5 class="card-title">Wriothesley</h5>
+                        <p class="card-text">Hệ: Băng | Vũ khí: Pháp kh</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/layla.webp" class="card-img-top" alt="layla">
+                    <div class="card-body">
+                        <h5 class="card-title">Layla</h5>
+                        <p class="card-text">Hệ: Băng | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Vũ khí cán dài">
+                <div class="card">
+                    <img src="picture/shenhe.webp" class="card-img-top" alt="shenhe">
+                    <div class="card-body">
+                        <h5 class="card-title">Shenhe</h5>
+                        <p class="card-text">Hệ: Băng | Vũ khí: Vũ khí cán dài</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nhân vật hệ Thủy -->
+            <h3 class="text-center">Hệ: Thủy</h3>
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Cung">
+                <div class="card">
+                    <img src="picture/yelan.webp" class="card-img-top" alt="yelan">
+                    <div class="card-body">
+                        <h5 class="card-title">Yelan</h5>
+                        <p class="card-text">Hệ: Thủy | Vũ khí: Cung</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/ayato.webp" class="card-img-top" alt="Ayato">
+                    <div class="card-body">
+                        <h5 class="card-title">Ayato</h5>
+                        <p class="card-text">Hệ: Thủy | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/kokomi.webp" class="card-img-top" alt="kokomi">
+                    <div class="card-body">
+                        <h5 class="card-title">Kokomi</h5>
+                        <p class="card-text">Hệ: Thủy | Vũ khí: Pháp khí</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Vũ khí cán dài">
+                <div class="card">
+                    <img src="picture/candace.webp" class="card-img-top" alt="candace">
+                    <div class="card-body">
+                        <h5 class="card-title">Candace</h5>
+                        <p class="card-text">Hệ: Thủy | Vũ khí: Vũ khí cán dài</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Kiếm đơn">
+                <div class="card">
+                    <img src="picture/xingqiu.webp" class="card-img-top" alt="Xingqiu">
+                    <div class="card-body">
+                        <h5 class="card-title">Xingqiu</h5>
+                        <p class="card-text">Hệ: Thủy | Vũ khí: Kiếm đơn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Pháp khí">
+                <div class="card">
+                    <img src="picture/neuvillette.webp" class="card-img-top" alt="neuvillette">
+                    <div class="card-body">
+                        <h5 class="card-title">Neuvillette</h5>
+                        <p class="card-text">Hệ: Thủy | Vũ khí: Pháp khí</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer"
+        style="background: linear-gradient(to right, #1a1c2c, #2d3436); color: white; padding: 30px 0 10px 0;">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="row mb-3">
+                <!-- Liên kết -->
+                <div class="col-md-4">
+                    <h5 style="color: #74b9ff; margin-bottom: 15px; font-weight: bold;">Liên kết hữu ích</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-1"><a href="https://genshin.hoyoverse.com/vi/home" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Trang chủ chính
+                                thức</a></li>
+                        <li class="mb-1"><a href="https://www.hoyolab.com/" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">HoYoLAB</a></li>
+                        <li class="mb-1"><a href="https://genshin.hoyoverse.com/vi/download" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tải game</a></li>
+                        <li class="mb-1"><a href="https://genshin.hoyoverse.com/vi/news" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tin tức</a></li>
+                    </ul>
+                </div>
+
+                <!-- Hỗ trợ -->
+                <div class="col-md-4">
+                    <h5 style="color: #74b9ff; margin-bottom: 15px; font-weight: bold;">Hỗ trợ người chơi</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-1"><a href="https://www.hoyolab.com/article_pre/1308" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Hướng dẫn người
+                                mới</a></li>
+                        <li class="mb-1"><a href="https://genshin.hoyoverse.com/vi/company/privacy" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Chính sách bảo
+                                mật</a></li>
+                        <li class="mb-1"><a href="https://www.hoyoverse.com/vi-vn/about-us" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Về chúng tôi</a>
+                        </li>
+                        <li class="mb-1"><a href="https://www.hoyoverse.com/vi-vn/contact" target="_blank"
+                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Mạng xã hội -->
+                <div class="col-md-4">
+                    <h5 style="color: #74b9ff; margin-bottom: 15px; font-weight: bold;">Kết nối với chúng tôi</h5>
+                    <div class="social-links" style="display: flex; gap: 15px;">
+                        <a href="https://www.facebook.com/Genshinimpact.vi" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/genshinimpactvi" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@GenshinImpact" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/genshinimpact/" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://discord.com/invite/genshinimpact" target="_blank"
+                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
+                                class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Info Section -->
+            <div class="row justify-content-center mb-2">
+                <div class="col-12 text-center">
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;">
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+                        <h5 style="color: #74b9ff; font-weight: bold; margin-bottom: 10px;">Thông tin sinh viên thực
+                            hiện</h5>
+                        <div style="color: #dcdde1; font-size: 14px; line-height: 1.4;">
+                            <p style="margin-bottom: 3px;">Họ và tên: Nguyễn Nhật Trường</p>
+                            <p style="margin-bottom: 3px;">MSSV: 110122197</p>
+                            <p style="margin-bottom: 3px;">Lớp: D22TTC</p>
+                            <p style="margin-bottom: 3px;">Đồ án: Thiết kế website giới thiệu game Genshin Impact</p>
+                            <p style="margin-bottom: 3px;">Giảng viên hướng dẫn: Phạm Minh Đương</p>
+                            <p style="margin-bottom: 0;">Trường Đại học Trà Vinh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const element = document.getElementById('element').value;
+            const weapon = document.getElementById('weapon').value;
+            const characters = document.querySelectorAll('.character');
+            const elementHeadings = document.querySelectorAll('h3.text-center');
+            const searchResultHeading = document.querySelector('.search-result-heading');
+
+            // Ẩn tất cả các nhân vật và tiêu đề nguyên tố
+            characters.forEach(character => {
+                character.style.display = 'none';
+            });
+            elementHeadings.forEach(heading => {
+                heading.style.display = 'none';
+            });
+
+            // Luôn hiển thị heading "Kết quả tìm kiếm"
+            searchResultHeading.style.display = 'block';
+
+            // Hiển thị các nhân vật phù hợp
+            let hasResults = false;
+            characters.forEach(character => {
+                const characterElement = character.getAttribute('data-element');
+                const characterWeapon = character.getAttribute('data-weapon');
+
+                if ((element === '' || characterElement === element) && 
+                    (weapon === '' || characterWeapon === weapon)) {
+                    character.style.display = 'block';
+                    hasResults = true;
+                }
+            });
+
+            // Nếu không có kết quả, hiển thị thông báo
+            if (!hasResults) {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '<div class="col-12 text-center"><p>Không tìm thấy nhân vật phù hợp</p></div>';
+            }
+        });
+
+        // Xử lý reset form
+        document.getElementById('searchForm').addEventListener('reset', function () {
+            const characters = document.querySelectorAll('.character');
+            const elementHeadings = document.querySelectorAll('h3.text-center');
+            const searchResultHeading = document.querySelector('.search-result-heading');
+
+            // Hiển thị lại tất cả
+            characters.forEach(character => {
+                character.style.display = 'block';
+            });
+            elementHeadings.forEach(heading => {
+                heading.style.display = 'block';
+            });
+            searchResultHeading.classList.remove('hidden');
+        });
+
+        // Hàm áp dụng style cho cards
+        function applyCardStyles() {
+            const cards = document.querySelectorAll('.character .card');
+            const elementColors = {
+                'Phong': ['#77A1D3', '#79CBCA'],
+                'Nham': ['#FFB88C', '#DE6262'],
+                'Lôi': ['#9796F0', '#FBC7D4'],
+                'Thảo': ['#B4EC51', '#429321'],
+                'Thủy': ['#48C6EF', '#6F86D6'],
+                'Hỏa': ['#FF512F', '#F09819'],
+                'Băng': ['#A1C4FD', '#C2E9FB']
+            };
+
+            cards.forEach(card => {
+                try {
+                    const element = card.closest('.character').getAttribute('data-element');
+                    const colors = elementColors[element] || ['#77A1D3', '#79CBCA'];
+
+                    // Cập nhật style cho card
+                    card.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.cursor = 'pointer';
+                    card.style.position = 'relative';
+                    card.style.overflow = 'hidden';
+
+                    const cardBody = card.querySelector('.card-body');
+                    if (!cardBody) return;
+
+                    const title = cardBody.querySelector('.card-title')?.textContent || '';
+                    const cardText = cardBody.querySelector('.card-text')?.textContent || '';
+                    const [elementText, weaponText] = cardText.split('|');
+                    if (!elementText || !weaponText) return;
+
+                    const [, elementValue] = elementText.split(':');
+                    const [, weaponValue] = weaponText.split(':');
+
+                    // Cập nhật HTML cho card body
+                    cardBody.innerHTML = `
+                        <h5 class="card-title" style="position: relative; display: inline-block; transition: all 0.3s ease;">
+                            ${title}
+                            <span style="position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; 
+                                       background: linear-gradient(90deg, ${colors[0]}, ${colors[1]}, ${colors[0]}); 
+                                       transition: width 0.5s ease; background-size: 200% 100%;"
+                                 onmouseover="this.style.width='100%'; this.style.backgroundPosition='right center'"
+                                 onmouseout="this.style.width='0'; this.style.backgroundPosition='left center'"></span>
+                        </h5>
+                        <p class="card-text" style="opacity: 0.8; transition: all 0.3s ease;"
+                           onmouseover="this.style.opacity='1'; this.style.transform='translateX(10px)'"
+                           onmouseout="this.style.opacity='0.8'; this.style.transform='translateX(0)'">
+                            <span class="element-text" style="font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;">
+                                Hệ: <span style="background: linear-gradient(45deg, ${colors[0]}, ${colors[1]}); -webkit-background-clip: text; color: transparent;">${elementValue?.trim()}</span>
+                            </span> 
+                            | 
+                            <span class="weapon-text" style="font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;">
+                                Vũ khí: <span style="background: linear-gradient(45deg, #FFB88C, #FF9A9E); -webkit-background-clip: text; color: transparent;">${weaponValue?.trim()}</span>
+                            </span>
+                        </p>
+                    `;
+
+                    // Thêm hover effects
+                    card.addEventListener('mouseover', function() {
+                        this.style.transform = 'translateY(-15px) scale(1.05)';
+                        this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)';
+                        this.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))';
+                    });
+
+                    card.addEventListener('mouseout', function() {
+                        this.style.transform = 'translateY(0) scale(1)';
+                        this.style.boxShadow = 'none';
+                        this.style.background = 'white';
+                    });
+
+                    // Thêm hover effect cho hình ảnh
+                    const img = card.querySelector('img');
+                    if (img) {
+                        img.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        img.style.position = 'relative';
+                        img.style.zIndex = '1';
+                        img.addEventListener('mouseover', function() {
+                            this.style.transform = 'scale(1.15)';
+                            this.style.filter = 'brightness(1.1) contrast(1.1)';
+                        });
+                        img.addEventListener('mouseout', function() {
+                            this.style.transform = 'scale(1)';
+                            this.style.filter = 'none';
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error applying card styles:', error);
+                }
+            });
+        }
+
+        // Gọi hàm khi trang được load
+        document.addEventListener('DOMContentLoaded', applyCardStyles);
+    </script>
+</body>
+
+</html>
