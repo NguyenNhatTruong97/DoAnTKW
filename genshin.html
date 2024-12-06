@@ -7,84 +7,855 @@
     <title>Genshin Impact</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Thêm hiệu ứng hover cho nav links */
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
+    /* ===== RESET & GLOBAL STYLES ===== */
+    body {
+        background: linear-gradient(-45deg, #FFE5E5, #E5F0FF, #E5FFE5, #FFE5FF);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        min-height: 100vh;
+    }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: #8B4513;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
+    /* ===== ANIMATIONS ===== */
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
-        .nav-link:hover {
-            color: #5c2807 !important;
-        }
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
 
-        .nav-link:hover::after {
-            width: 80%;
-        }
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 
-        /* Hiệu ứng hover cho nút tải game */
-        .btn-warning {
-            border: 2px solid #8B4513;
-            background-color: #FFF2CC;
-            transition: all 0.3s ease;
-        }
+    /* ===== NAVIGATION STYLES ===== */
+    .nav-item {
+        position: relative;
+        margin: 0 5px;
+    }
 
-        .btn-warning:hover {
-            background-color: #8B4513;
-            color: #FFF2CC !important;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.2);
-        }
+    .nav-link {
+        position: relative;
+        z-index: 1;
+        padding: 10px 20px !important;
+        border-radius: 25px;
+        transition: all 0.3s ease !important;
+    }
 
-        /* Thêm vào phần style hiện có */
-        .region-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .region-card:hover img {
-            transform: scale(1.05);
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-        /*nút hamburger*/
-        @media (max-width: 991px) {
-        .navbar-collapse {
-            background: linear-gradient(to right, #FFF2CC, #FFFAF0);
-            padding: 20px;
-            border-radius: 0 0 15px 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+    /* Nav hover effects */
+    .nav-link:hover {
+        color: #13198b !important;
+        transform: translateY(-2px);
+    }
 
-        .navbar-nav {
-            text-align: center;
-        }
+    /* ===== SECTION CONTAINERS ===== */
+    .container-fluid {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        margin: 20px 0;
+    }
 
-        .btn-warning {
-            display: block;
-            margin: 10px auto !important;
-            width: fit-content;
+    /* ===== CARD COMPONENTS ===== */
+    /* Region Cards */
+    .region-card {
+        background: rgba(255,255,255,0.8);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        transition: all 0.5s ease;
+    }
+
+    /* Quest Cards */
+    .quest-card {
+        background: rgba(255,255,255,0.9);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.5s ease;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h2, h3, h4 {
+        transition: all 0.3s ease;
+    }
+
+    /* ===== BUTTONS & BADGES ===== */
+    .badge {
+        transition: all 0.3s ease;
+    }
+
+    .btn {
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* ===== FOOTER STYLES ===== */
+    .footer {
+        background: linear-gradient(45deg, #1a1c2c, #2d3436, #2c3e50, #34495e) !important;
+        background-size: 400% 400% !important;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    /* ===== MEDIA QUERIES ===== */
+    @media (max-width: 768px) {
+        /* Mobile styles */
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        /* Tablet styles */
+    }
+
+    @media (min-width: 1025px) {
+        /* Desktop styles */
+    }
+
+    /* Hiệu ứng cho các card */
+    .quest-card {
+        transition: all 0.3s ease;
+        border: none;
+        background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+        backdrop-filter: blur(10px);
+    }
+
+    .quest-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+    }
+
+    /* Hiệu ứng cho badges */
+    .badge {
+        transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Hiệu ứng cho images */
+    .quest-image img {
+        transition: all 0.5s ease;
+    }
+
+    .quest-image:hover img {
+        transform: scale(1.1);
+        filter: brightness(1.1);
+    }
+
+    /* Hiệu ứng cho headings */
+    h2:hover, h3:hover, h4:hover {
+        transform: scale(1.05);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        color: #3498db;
+    }
+
+    /* Hiệu ứng cho reward items */
+    .reward-item {
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        background: linear-gradient(white, white) padding-box,
+                    linear-gradient(45deg, #77A1D3, #79CBCA) border-box;
+    }
+
+    .reward-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Hiệu ứng cho icons */
+    .fas {
+        transition: all 0.3s ease;
+    }
+
+    .reward-item:hover .fas {
+        transform: rotate(360deg) scale(1.2);
+    }
+
+    /* Hiệu ứng cho background overlay */
+    .background-overlay {
+        animation: gradientBG 15s ease infinite;
+        background-size: 400% 400%;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Hiệu ứng cho buttons */
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: all 0.5s ease;
+    }
+
+    .btn:hover::before {
+        left: 100%;
+    }
+
+    /* Hiệu ứng cho region cards */
+    .region-card {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .region-card:hover {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-15px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .region-card:hover img {
+        transform: scale(1.1);
+        filter: brightness(1.1);
+    }
+
+    .region-card:hover .region-title {
+        transform: translateY(-5px);
+        text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    /* Hiệu ứng cho menu items */
+    .nav-item {
+        position: relative;
+        margin: 0 5px;
+    }
+
+    .nav-link {
+        position: relative;
+        z-index: 1;
+        padding: 10px 20px !important;
+        border-radius: 25px;
+        transition: all 0.3s ease !important;
+    }
+
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #dfcf1b, #0eb037);
+        border-radius: 25px;
+        z-index: -1;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: #13198b !important;
+        transform: translateY(-2px);
+    }
+
+    .nav-link:hover::before {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(19, 139, 93, 0.2);
+    }
+
+    /* Hiệu ứng active cho menu item hiện tại */
+    .nav-item.active .nav-link::before {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Hiệu ứng cho các section giới thiệu */
+    .reason-section {
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        transition: all 0.5s ease;
+        background: rgba(255, 255, 255, 0.8);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    /* Định nghĩa animation gradient */
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Hiệu ứng hover cho từng section */
+    .mienphi:hover {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .dathietbi:hover {
+        background: linear-gradient(-45deg, #FF6B6B, #4ECDC4, #45B7D1, #96E6B3);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .thegioimo:hover {
+        background: linear-gradient(-45deg, #FFD93D, #6BCB77, #4D96FF, #FF6B6B);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .cottruyen:hover {
+        background: linear-gradient(-45deg, #FF9A8B, #FF6A88, #FF99AC, #FF6B6B);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .nhanvat:hover {
+        background: linear-gradient(-45deg, #08AEEA, #2AF598, #FF6B6B, #FFD93D);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .vukhi:hover {
+        background: linear-gradient(-45deg, #A9C9FF, #FFBBEC, #FF9A8B, #FF6A88);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .thanhdivat:hover {
+        background: linear-gradient(-45deg, #21D4FD, #B721FF, #08AEEA, #2AF598);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .nguyento:hover {
+        background: linear-gradient(-45deg, #FA8BFF, #2BD2FF, #2BFF88, #FFD93D);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Hiệu ứng cho hình ảnh trong section */
+    .reason-section img {
+        transition: all 0.5s ease;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .reason-section:hover img {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Hiệu ứng cho text trong section */
+    .reason-section h3 {
+        transition: all 0.3s ease;
+    }
+
+    .reason-section:hover h3 {
+        transform: translateY(-5px);
+        color: #2C3E50;
+    }
+
+    .reason-section p {
+        transition: all 0.3s ease;
+    }
+
+    .reason-section:hover p {
+        color: #34495e;
+    }
+
+    /* Style cho quest cards */
+    .quest-card {
+        background: rgba(255,255,255,0.9);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.5s ease;
+    }
+
+    /* Hiệu ứng hover cho từng loại nhiệm vụ */
+    .quest-card[data-quest="archon"]:hover {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .quest-card[data-quest="world"]:hover {
+        background: linear-gradient(-45deg, #A9C9FF, #FFBBEC, #FF9A8B, #FF6A88);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .quest-card[data-quest="character"]:hover {
+        background: linear-gradient(-45deg, #21D4FD, #B721FF, #08AEEA, #2AF598);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .quest-card[data-quest="daily"]:hover {
+        background: linear-gradient(-45deg, #FFD93D, #6BCB77, #4D96FF, #FF6B6B);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .quest-card[data-quest="event"]:hover {
+        background: linear-gradient(-45deg, #FA8BFF, #2BD2FF, #2BFF88, #FFD93D);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Hiệu ứng cho reward items */
+    .reward-item {
+        transition: all 0.5s ease;
+        background: rgba(255, 255, 255, 0.8);
+        background-size: 400% 400%;
+    }
+
+    .reward-item:hover {
+        background: linear-gradient(-45deg, #08AEEA, #2AF598, #FF6B6B, #FFD93D);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Hiệu ứng cho từng vùng */
+    .region-card[data-region="mondstadt"]:hover {
+        background: linear-gradient(-45deg, #77A1D3, #79CBCA, #87CEEB, #B4ECF3);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    .region-card[data-region="liyue"]:hover {
+        background: linear-gradient(-45deg, #F7B733, #FC4A1A, #FFB88C, #DE6262);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    .region-card[data-region="inazuma"]:hover {
+        background: linear-gradient(-45deg, #9B59B6, #8E44AD, #9796F0, #FBC7D4);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    .region-card[data-region="sumeru"]:hover {
+        background: linear-gradient(-45deg, #27AE60, #2ECC71, #B4EC51, #429321);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    /* Style cơ bản cho region cards */
+    .region-card {
+        background: rgba(255,255,255,0.8);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        transition: all 0.5s ease;
+    }
+
+    .region-image {
+        position: relative;
+        overflow: hidden;
+        height: 300px;
+    }
+
+    .region-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .region-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+    }
+
+    .region-title {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        margin: 0;
+        font-size: 28px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* Hiệu ứng mờ cho các section */
+    .container-fluid {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        margin: 20px 0;
+    }
+
+    /* Hiệu ứng cho background overlay */
+    .background-overlay {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Hiệu ứng cho footer */
+    .footer {
+        background: linear-gradient(45deg, #1a1c2c, #2d3436, #2c3e50, #34495e) !important;
+        background-size: 400% 400% !important;
+        animation: gradientBG 15s ease infinite;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Hiệu ứng cho các link trong footer */
+    .footer a {
+        position: relative;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .footer a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: linear-gradient(to right, #74b9ff, #0984e3);
+        transition: width 0.3s ease;
+    }
+
+    .footer a:hover {
+        color: #74b9ff !important;
+        transform: translateX(5px);
+    }
+
+    .footer a:hover::after {
+        width: 100%;
+    }
+
+    /* Hiệu ứng cho social media icons */
+    .social-links a {
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.1);
+        transition: all 0.3s ease;
+        text-decoration: none !important;
+    }
+
+    .social-links a:hover {
+        transform: translateY(-5px) scale(1.1);
+        background: linear-gradient(45deg, #74b9ff, #0984e3);
+        box-shadow: 0 5px 15px rgba(116, 185, 255, 0.4);
+        text-decoration: none !important;
+    }
+
+    .social-links a:hover i {
+        animation: bounce 0.5s ease infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+
+    /* Hiệu ứng cho student info section */
+    .footer .student-info {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .footer .student-info:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Hiệu ứng cho headings trong footer */
+    .footer h5 {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+
+    .footer h5::after {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to right, #74b9ff, transparent);
+        transition: width 0.3s ease;
+    }
+
+    .footer h5:hover::after {
+        width: 100%;
+    }
+
+    /* Hiệu ứng cho phần thông tin sinh viên */
+    .student-info-section {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.08));
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .student-info-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(116,185,255,0.1) 0%, transparent 50%);
+        animation: rotate 15s linear infinite;
+        z-index: -1;
+    }
+
+    .student-info-section::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, 
+            rgba(116,185,255,0.1) 0%,
+            transparent 20%,
+            transparent 80%,
+            rgba(116,185,255,0.1) 100%
+        );
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    .student-info-section:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        border: 1px solid rgba(116,185,255,0.3);
+    }
+
+    .student-info-section:hover::after {
+        opacity: 1;
+    }
+
+    .student-info-section h5 {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+        background: linear-gradient(45deg, #74b9ff, #0984e3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: colorFlow 5s ease infinite;
+    }
+
+    .student-info-section p {
+        position: relative;
+        transition: all 0.3s ease;
+        padding-left: 0;
+        transform-origin: left;
+    }
+
+    .student-info-section:hover p {
+        padding-left: 20px;
+        color: #74b9ff;
+        transform: scale(1.02);
+    }
+
+    .student-info-section p::before {
+        content: '★';
+        position: absolute;
+        left: -20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        color: #74b9ff;
+        animation: spin 2s linear infinite;
+    }
+
+    .student-info-section:hover p::before {
+        left: 0;
+        opacity: 1;
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes colorFlow {
+        0% { filter: hue-rotate(0deg); }
+        50% { filter: hue-rotate(180deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .student-info-section p:hover {
+        transform: translateX(10px) scale(1.05);
+        text-shadow: 0 0 10px rgba(116,185,255,0.5);
+    }
+
+    /* Hiệu ứng cho phần thông tin game */
+    .game-info {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .game-info::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 50%);
+        animation: rotate 20s linear infinite;
+        z-index: -1;
+    }
+
+    .game-info h2 {
+        position: relative;
+        display: block;
+        text-align: center;
+        width: 100%;
+        background: linear-gradient(45deg, #2C3E50, #3498db, #2980b9, #3498db);
+        background-size: 300% 300%;
+        color: transparent;  /* Thêm fallback */
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        -ms-background-clip: text;
+        -o-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-text-fill-color: transparent;
+        animation: gradientFlow 8s ease infinite;
+    }
+
+    .game-info p {
+        position: relative;
+        transition: all 0.5s ease;
+        transform: translateY(30px);
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .game-info p:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+    }
+
+    .game-info img {
+        transition: all 0.8s ease;
+        transform: scale(0.95) translateY(20px);
+        opacity: 0;
+        animation: imageReveal 1s ease forwards 0.3s;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .game-info:hover img {
+        transform: scale(1.02);
+        filter: brightness(1.1) contrast(1.1);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    @keyframes gradientFlow {
+        0% {
+            background-position: 0% 50%;
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+        50% {
+            background-position: 100% 50%;
+            text-shadow: 0 0 20px rgba(52, 152, 219, 0.8);
+        }
+        100% {
+            background-position: 0% 50%;
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
         }
     }
-    </style>
+
+    @keyframes imageReveal {
+        from {
+            transform: scale(0.95) translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
+
 </head>
 
 <body>
 <!-- Thanh điều hướng -->
-<nav class="navbar navbar-expand-lg" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: linear-gradient(to right, #FFF2CC, #FFFAF0);">
+<nav class="navbar navbar-expand-lg" style="position: fixed; top: 0; width: 100%; height: 80px; z-index: 1000; background: linear-gradient(to right, #FFF2CC, #FFFAF0);">
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="#" style="margin-left: 15px;">
@@ -138,23 +909,19 @@
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('nenphu.jpg'); background-size: cover; background-position: center; filter: blur(8px); opacity: 0.5; z-index: 1;">
         </div>
 
-        <div class="content" style="position: relative; z-index: 2; padding: 40px 0;">
-            <h2 class="text-center mb-4"
-                style="color: #2C3E50; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">Thông tin về
-                Genshin Impact</h2>
+        <div class="content game-info" style="position: relative; z-index: 2; padding: 40px 0;">
+            <h2 class="text-center mb-4" style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+                Thông tin về Genshin Impact
+            </h2>
 
             <!-- Đoạn văn giới thiệu -->
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <p
-                        style="font-size: 18px; line-height: 1.8; background: rgba(255,255,255,0.8); padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                        Genshin Impact là một trò chơi nhập vai hành động thế giới mở miễn phí được phát triển bởi
-                        miHoYo.
+                    <p style="font-size: 18px; line-height: 1.8; background: rgba(255,255,255,0.8); padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        Genshin Impact là một trò chơi nhập vai hành động thế giới mở miễn phí được phát triển bởi miHoYo.
                         Game được phát hành vào ngày 28 tháng 9 năm 2020 trên nhiều nền tảng bao gồm Windows,
-                        PlayStation 4,
-                        PlayStation 5, iOS và Android. Trò chơi nổi tiếng với đồ họa anime tuyệt đẹp, hệ thống chiến đấu
-                        đc đáo
-                        và thế giới mở rộng lớn đầy màu sắc.
+                        PlayStation 4, PlayStation 5, iOS và Android. Trò chơi nổi tiếng với đồ họa anime tuyệt đẹp, 
+                        hệ thống chiến đấu độc đáo và thế giới mở rộng lớn đầy màu sắc.
                     </p>
                 </div>
             </div>
@@ -281,8 +1048,8 @@
                 <div class="col-md-6 order-md-1">
                     <h3 style="color: #2C3E50; font-weight: bold; margin-bottom: 20px;">Cốt truyện game cuốn hút</h3>
                     <p style="font-size: 16px; line-height: 1.8;">
-                        Nhân vật chính bị đẩy đến Teyva, du hành trong th giới này, kết giao với nhng người bạn mới,
-                        những chiến hữu mới trên chuyến hành trình tìm kiếm 7 vị Thần nắm giữ các nguyên tố đến khi gặp
+                        Nhân vật chính bị đẩy đến Teyva, du hành trong thế giới này, kết giao với những người bạn mới,
+                        nhữnng chiến hữu mới trên chuyến hành trình tìm kiếm 7 vị Thần nắm giữ các nguyên tố đến khi gặp
                         lại người anh em thất lạc của mình.</p>
                 </div>
             </div>
@@ -317,7 +1084,7 @@
                         Game có hệ thống vũ khí đa dạng về ngoại hình và lối chơi.
                         Vũ khí có thể được nâng cấp và tinh luyện để tăng sức mạnh.
                         Để có được vũ khí phù hợp với mỗi một nhân vật (gọi là Trấn), người chơi cần may mắn hoặc tích
-                        lũy tài nguyên.
+                        ly tài nguyên.
                     </p>
                 </div>
             </div>
@@ -353,7 +1120,7 @@
                         o ra phản ứng (phản
                         ứng nguyên tố - điểm đặc trưng của game).
                         Để không bị "yếu" trong trò chơi, bạn nên tham khảo sơ qua mục<a href="nguyento.html"> nguyên tố
-                        </a> để hiểu thêm về cách dùng và tính sát thương nguyên tố.
+                        </a> để hiểu thêm về cách dùng v tính sát thương nguyên tố.
                     </p>
                 </div>
             </div>
@@ -372,13 +1139,12 @@
             <div class="row justify-content-center">
                 <!-- Mondstadt -->
                 <div class="col-md-6 mb-4">
-                    <div class="region-card" style="background: rgba(255,255,255,0.8); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                        <div class="region-image" style="position: relative; overflow: hidden; height: 300px;">
-                            <img src="picture/phongquoc.jpg" alt="Mondstadt" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
-                            <div class="region-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
+                    <div class="region-card" data-region="mondstadt">
+                        <div class="region-image">
+                            <img src="picture/phongquoc.jpg" alt="Mondstadt">
+                            <div class="region-overlay">
                             </div>
-                            <h3 class="region-title" style="position: absolute; bottom: 20px; left: 20px; color: white; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                                Mondstadt</h3>
+                            <h3 class="region-title">Mondstadt</h3>
                         </div>
                         <div class="region-content" style="padding: 25px;">
                             <div class="region-info mb-3">
@@ -401,13 +1167,12 @@
 
                 <!-- Liyue -->
                 <div class="col-md-6 mb-4">
-                    <div class="region-card" style="background: rgba(255,255,255,0.8); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                        <div class="region-image" style="position: relative; overflow: hidden; height: 300px;">
-                            <img src="picture/nhamquoc.webp" alt="Liyue" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
-                            <div class="region-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
+                    <div class="region-card" data-region="liyue">
+                        <div class="region-image">
+                            <img src="picture/nhamquoc.webp" alt="Liyue">
+                            <div class="region-overlay">
                             </div>
-                            <h3 class="region-title" style="position: absolute; bottom: 20px; left: 20px; color: white; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                                Liyue</h3>
+                            <h3 class="region-title">Liyue</h3>
                         </div>
                         <div class="region-content" style="padding: 25px;">
                             <div class="region-info mb-3">
@@ -430,13 +1195,12 @@
 
                 <!-- Inazuma -->
                 <div class="col-md-6 mb-4">
-                    <div class="region-card" style="background: rgba(255,255,255,0.8); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                        <div class="region-image" style="position: relative; overflow: hidden; height: 300px;">
-                            <img src="picture/loiquoc.jpg" alt="Inazuma" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
-                            <div class="region-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
+                    <div class="region-card" data-region="inazuma">
+                        <div class="region-image">
+                            <img src="picture/loiquoc.jpg" alt="Inazuma">
+                            <div class="region-overlay">
                             </div>
-                            <h3 class="region-title" style="position: absolute; bottom: 20px; left: 20px; color: white; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                                Inazuma</h3>
+                            <h3 class="region-title">Inazuma</h3>
                         </div>
                         <div class="region-content" style="padding: 25px;">
                             <div class="region-info mb-3">
@@ -459,13 +1223,12 @@
 
                 <!-- Sumeru -->
                 <div class="col-md-6 mb-4">
-                    <div class="region-card" style="background: rgba(255,255,255,0.8); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                        <div class="region-image" style="position: relative; overflow: hidden; height: 300px;">
-                            <img src="picture/thaoquoc.webp" alt="Sumeru" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
-                            <div class="region-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
+                    <div class="region-card" data-region="sumeru">
+                        <div class="region-image">
+                            <img src="picture/thaoquoc.webp" alt="Sumeru">
+                            <div class="region-overlay">
                             </div>
-                            <h3 class="region-title" style="position: absolute; bottom: 20px; left: 20px; color: white; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                                Sumeru</h3>
+                            <h3 class="region-title">Sumeru</h3>
                         </div>
                         <div class="region-content" style="padding: 25px;">
                             <div class="region-info mb-3">
@@ -500,18 +1263,14 @@
 
             <!-- Nhiệm vụ chính -->
             <div class="quest-section mb-5">
-                <div class="quest-card"
-                    style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <div class="quest-card" data-quest="archon">
                     <div class="row align-items-center">
                         <div class="col-md-4">
-                            <img src="picture/nvchinh.jpg" alt="Main Quest" class="img-fluid"
-                                style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                            <img src="picture/nvchinh.jpg" alt="Main Quest" class="img-fluid" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
                         </div>
                         <div class="col-md-8">
                             <div class="quest-badge mb-3">
-                                <span class="badge"
-                                    style="background-color: #e74c3c; padding: 8px 20px; border-radius: 20px; font-size: 16px;">Nhiệm
-                                    Vụ Archon</span>
+                                <span class="badge" style="background-color: #e74c3c; padding: 8px 20px; border-radius: 20px; font-size: 16px;">Nhiệm Vụ Archon</span>
                             </div>
                             <h3 style="color: #2C3E50; font-weight: bold;">Nhiệm Vụ Cốt Truyện Chính</h3>
                             <p style="font-size: 16px; line-height: 1.8;">
@@ -528,15 +1287,12 @@
             <div class="row">
                 <!-- Nhiệm vụ thế giới -->
                 <div class="col-md-6 mb-4">
-                    <div class="quest-card"
-                        style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 20px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div class="quest-card" data-quest="world">
                         <div class="quest-image mb-3" style="height: 200px; overflow: hidden; border-radius: 10px;">
                             <img src="picture/nvthegioi.jpg" alt="World Quest" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="quest-badge mb-3">
-                            <span class="badge"
-                                style="background-color: #3498db; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm
-                                Vụ Thế Giới</span>
+                            <span class="badge" style="background-color: #3498db; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm Vụ Thế Giới</span>
                         </div>
                         <h4 style="color: #2C3E50; font-weight: bold;">Khám Phá Thế Giới Mở</h4>
                         <p style="font-size: 15px; line-height: 1.7;">
@@ -549,39 +1305,33 @@
 
                 <!-- Nhiệm vụ nhân vật -->
                 <div class="col-md-6 mb-4">
-                    <div class="quest-card"
-                        style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 20px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div class="quest-card" data-quest="character">
                         <div class="quest-image mb-3" style="height: 200px; overflow: hidden; border-radius: 10px;">
                             <img src="picture/nvnhanvat.png" alt="Character Quest" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="quest-badge mb-3">
-                            <span class="badge"
-                                style="background-color: #9b59b6; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm
-                                Vụ Nhân Vật</span>
+                            <span class="badge" style="background-color: #9b59b6; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm Vụ Nhân Vật</span>
                         </div>
                         <h4 style="color: #2C3E50; font-weight: bold;">Câu Chuyện Của Các Nhân Vật</h4>
                         <p style="font-size: 15px; line-height: 1.7;">
                             Tìm hiểu sâu hơn về câu chuyện của từng nhân vật thông qua các nhiệm vụ cá nhân.
-                            Mỗi nhân vật đều có quá khứ và động cơ riêng, chờ đợi bạn khám phá.
+                            Mỗi nhân vật đều có quá khứ và đng cơ riêng, chờ đợi bạn khám phá.
                         </p>
                     </div>
                 </div>
 
                 <!-- Nhiệm vụ hàng ngày -->
                 <div class="col-md-6 mb-4">
-                    <div class="quest-card"
-                        style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 20px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div class="quest-card" data-quest="daily">
                         <div class="quest-image mb-3" style="height: 200px; overflow: hidden; border-radius: 10px;">
                             <img src="picture/nvhangngay.jpg" alt="Daily Quest" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="quest-badge mb-3">
-                            <span class="badge"
-                                style="background-color: #2ecc71; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm
-                                Vụ Hằng Ngày</span>
+                            <span class="badge" style="background-color: #2ecc71; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm Vụ Hằng Ngày</span>
                         </div>
                         <h4 style="color: #2C3E50; font-weight: bold;">Hoạt Động Hàng Ngày</h4>
                         <p style="font-size: 15px; line-height: 1.7;">
-                            Tham gia các nhiệm vụ hàng ngày để nhận thưởng và tài nguyên quý giá.
+                            Tham gia các nhi��m vụ hàng ngày để nhận thưởng v tài nguyên quý giá.
                             Từ việc thu thập nguyên liệu đến tiêu diệt quái vật, luôn có điều gì đó để bạn khám phá mỗi
                             ngày.
                         </p>
@@ -590,16 +1340,12 @@
 
                 <!-- Nhiệm vụ sự kiện -->
                 <div class="col-md-6 mb-4">
-                    <div class="quest-card"
-                        style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 20px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div class="quest-card" data-quest="event">
                         <div class="quest-image mb-3" style="height: 200px; overflow: hidden; border-radius: 10px;">
-                            <img src="picture/nvsukien.png" alt="Event Quest"
-                                style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="picture/nvsukien.png" alt="Event Quest" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="quest-badge mb-3">
-                            <span class="badge"
-                                style="background-color: #f1c40f; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm
-                                Vụ Sự Kiện</span>
+                            <span class="badge" style="background-color: #f1c40f; padding: 8px 20px; border-radius: 20px; font-size: 14px;">Nhiệm Vụ Sự Kiện</span>
                         </div>
                         <h4 style="color: #2C3E50; font-weight: bold;">Sự Kiện Đặc Biệt</h4>
                         <p style="font-size: 15px; line-height: 1.7;">
@@ -612,27 +1358,20 @@
 
             <!-- Phần thưởng nhiệm vụ -->
             <div class="rewards-section mt-5">
-                <div class="quest-card"
-                    style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <div class="quest-card" style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                     <h3 class="text-center mb-4" style="color: #2C3E50; font-weight: bold;">Phần Thưởng Hấp Dẫn</h3>
                     <div class="row">
                         <!-- Nguyên Thạch -->
                         <div class="col-md-3 col-6 mb-4">
-                            <div class="reward-item"
-                                style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
+                            <div class="reward-item" style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
                                 <h5 class="mb-3" style="color: #e74c3c; font-weight: bold;">Nguyên Thạch</h5>
-                                <div class="reward-info"
-                                    style="background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 10px;">
+                                <div class="reward-info" style="background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 10px;">
                                     <p class="small mb-2" style="color: #2C3E50; font-weight: 500;">Nhận được từ:</p>
                                     <ul class="text-left small" style="list-style-type: none; padding-left: 0;">
-                                        <li class="mb-2"><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Nhiệm vụ
-                                            Archon: 30-60</li>
-                                        <li class="mb-2"><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Nhiệm vụ
-                                            thế giới: 20-40</li>
-                                        <li class="mb-2"><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Nhiệm vụ
-                                            hàng ngày: 60</li>
-                                        <li><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Sự kiện: 300-1000
-                                        </li>
+                                        <li class="mb-2"><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Nhiệm vụ Archon: 30-60</li>
+                                        <li class="mb-2"><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Nhiệm vụ thế giới: 20-40</li>
+                                        <li class="mb-2"><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Nhiệm vụ hàng ngày: 60</li>
+                                        <li><i class="fas fa-gem mr-2" style="color: #e74c3c;"></i>Sự kiện: 300-1000</li>
                                     </ul>
                                 </div>
                             </div>
@@ -640,19 +1379,14 @@
 
                         <!-- Mora -->
                         <div class="col-md-3 col-6 mb-4">
-                            <div class="reward-item"
-                                style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
+                            <div class="reward-item" style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
                                 <h5 class="mb-3" style="color: #f1c40f; font-weight: bold;">Mora</h5>
-                                <div class="reward-info"
-                                    style="background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 10px;">
+                                <div class="reward-info" style="background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 10px;">
                                     <p class="small mb-2" style="color: #2C3E50; font-weight: 500;">Dùng để:</p>
                                     <ul class="text-left small" style="list-style-type: none; padding-left: 0;">
-                                        <li class="mb-2"><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Nâng
-                                            cấp nhân vật</li>
-                                        <li class="mb-2"><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Nâng
-                                            cấp vũ khí</li>
-                                        <li class="mb-2"><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Nâng
-                                            cấp thánh di vật</li>
+                                        <li class="mb-2"><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Nâng cấp nhân vật</li>
+                                        <li class="mb-2"><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Nâng cấp vũ khí</li>
+                                        <li class="mb-2"><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Nâng cấp thánh di vật</li>
                                         <li><i class="fas fa-coins mr-2" style="color: #f1c40f;"></i>Mua vật phẩm</li>
                                     </ul>
                                 </div>
@@ -661,20 +1395,14 @@
 
                         <!-- Kinh Nghiệm -->
                         <div class="col-md-3 col-6 mb-4">
-                            <div class="reward-item"
-                                style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
+                            <div class="reward-item" style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
                                 <h5 class="mb-3" style="color: #2ecc71; font-weight: bold;">Kinh Nghiệm</h5>
-                                <div class="reward-info"
-                                    style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 10px;">
-                                    <p class="small mb-2" style="color: #2C3E50; font-weight: 500;">Dùng để nâng cấp:
-                                    </p>
+                                <div class="reward-info" style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 10px;">
+                                    <p class="small mb-2" style="color: #2C3E50; font-weight: 500;">Dùng để nâng cấp:</p>
                                     <ul class="text-left small" style="list-style-type: none; padding-left: 0;">
-                                        <li class="mb-2"><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Cấp độ
-                                            nhân vật</li>
-                                        <li class="mb-2"><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Cấp độ
-                                            phiêu lưu</li>
-                                        <li class="mb-2"><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Cấp độ
-                                            hảo cảm</li>
+                                        <li class="mb-2"><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Cấp độ nhân vật</li>
+                                        <li class="mb-2"><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Cấp độ phiêu lưu</li>
+                                        <li class="mb-2"><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Cấp độ hảo cảm</li>
                                         <li><i class="fas fa-star mr-2" style="color: #2ecc71;"></i>Battle Pass</li>
                                     </ul>
                                 </div>
@@ -683,19 +1411,14 @@
 
                         <!-- Vật Phẩm -->
                         <div class="col-md-3 col-6 mb-4">
-                            <div class="reward-item"
-                                style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
+                            <div class="reward-item" style="text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.5);">
                                 <h5 class="mb-3" style="color: #9b59b6; font-weight: bold;">Vật Phẩm</h5>
-                                <div class="reward-info"
-                                    style="background: rgba(155, 89, 182, 0.1); padding: 15px; border-radius: 10px;">
+                                <div class="reward-info" style="background: rgba(155, 89, 182, 0.1); padding: 15px; border-radius: 10px;">
                                     <p class="small mb-2" style="color: #2C3E50; font-weight: 500;">Bao gồm:</p>
                                     <ul class="text-left small" style="list-style-type: none; padding-left: 0;">
-                                        <li class="mb-2"><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Nguyên
-                                            liệu nâng cấp</li>
-                                        <li class="mb-2"><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Thánh di
-                                            vật</li>
-                                        <li class="mb-2"><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Vũ khí
-                                        </li>
+                                        <li class="mb-2"><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Nguyên liệu nâng cấp</li>
+                                        <li class="mb-2"><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Thánh di vật</li>
+                                        <li class="mb-2"><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Vũ khí</li>
                                         <li><i class="fas fa-box mr-2" style="color: #9b59b6;"></i>Vật phẩm event</li>
                                     </ul>
                                 </div>
@@ -708,8 +1431,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer"
-        style="background: linear-gradient(to right, #1a1c2c, #2d3436); color: white; padding: 60px 0 20px 0;">
+    <footer class="footer" style="background: linear-gradient(to right, #1a1c2c, #2d3436); color: white; padding: 60px 0 20px 0;">
         <div class="container">
             <!-- Main Footer Content -->
             <div class="row mb-4">
@@ -717,15 +1439,10 @@
                 <div class="col-md-4">
                     <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Liên kết hữu ích</h5>
                     <ul style="list-style: none; padding: 0;">
-                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/home" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Trang chủ chính
-                                thức</a></li>
-                        <li class="mb-2"><a href="https://www.hoyolab.com/" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">HoYoLAB</a></li>
-                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/download" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tải game</a></li>
-                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/news" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tin tức</a></li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/home" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Trang chủ chính thức</a></li>
+                        <li class="mb-2"><a href="https://www.hoyolab.com/" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">HoYoLAB</a></li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/download" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tải game</a></li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/news" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tin tức</a></li>
                     </ul>
                 </div>
 
@@ -733,17 +1450,10 @@
                 <div class="col-md-4">
                     <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Hỗ trợ người chơi</h5>
                     <ul style="list-style: none; padding: 0;">
-                        <li class="mb-2"><a href="https://www.hoyolab.com/article_pre/1308" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Hướng dẫn người
-                                mới</a></li>
-                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/company/privacy" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Chính sách bảo
-                                mật</a></li>
-                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/about-us" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Về chúng tôi</a>
-                        </li>
-                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/contact" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Liên hệ</a></li>
+                        <li class="mb-2"><a href="https://www.hoyolab.com/article_pre/1308" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Hướng dẫn người mới</a></li>
+                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/company/privacy" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Chính sách bảo mật</a></li>
+                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/about-us" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Về chúng tôi</a></li>
+                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/contact" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Liên hệ</a></li>
                     </ul>
                 </div>
 
@@ -751,21 +1461,11 @@
                 <div class="col-md-4">
                     <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Kết nối với chúng tôi</h5>
                     <div class="social-links" style="display: flex; gap: 15px;">
-                        <a href="https://www.facebook.com/Genshinimpact.vi" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-facebook"></i></a>
-                        <a href="https://twitter.com/genshinimpactvi" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@GenshinImpact" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/genshinimpact/" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-instagram"></i></a>
-                        <a href="https://discord.com/invite/genshinimpact" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-discord"></i></a>
+                        <a href="https://www.facebook.com/Genshinimpact.vi" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/genshinimpactvi" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@GenshinImpact" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/genshinimpact/" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-instagram"></i></a>
+                        <a href="https://discord.com/invite/genshinimpact" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-discord"></i></a>
                     </div>
                 </div>
             </div>
@@ -774,10 +1474,8 @@
             <div class="row justify-content-center mb-4">
                 <div class="col-12 text-center">
                     <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;">
-                    <div
-                        style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
-                        <h5 style="color: #74b9ff; font-weight: bold; margin-bottom: 15px;">Thông tin sinh viên thực
-                            hiện</h5>
+                    <div class="student-info-section" style="padding: 20px; border-radius: 10px;">
+                        <h5 style="color: #74b9ff; font-weight: bold; margin-bottom: 15px;">Thông tin sinh viên thực hiện</h5>
                         <div style="color: #dcdde1; font-size: 15px; line-height: 1.8;">
                             <p style="margin-bottom: 5px;">Họ và tên: Nguyễn Nhật Trường</p>
                             <p style="margin-bottom: 5px;">MSSV: 110122197</p>

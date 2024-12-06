@@ -9,10 +9,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
-    <!-- Thêm style cho navbar -->
     <style>
-         .nav-link {
+        /* CSS cho thanh điều hướng */
+        body {
+            background-color: #f0f4f8;
+            /* Màu nền nhẹ cho toàn bộ trang */
+            font-family: 'Arial', sans-serif;
+            /* Font chữ dễ đọc */
+            color: #333;
+            /* Màu chữ chính */
+        }
+
+        .nav-link {
             position: relative;
             transition: color 0.3s ease;
         }
@@ -36,10 +44,6 @@
         .nav-link:hover::after {
             width: 80%;
         }
-    </style>
-
-    <!-- Thêm style vào phần head -->
-    <style>
         /* Hero Section */
         .hero-section {
             position: relative;
@@ -226,46 +230,340 @@
                 font-size: 1.2rem;
             }
         }
+
+        /* Hiệu ứng cho footer */
+    .footer {
+        background: linear-gradient(45deg, #1a1c2c, #2d3436, #2c3e50, #34495e) !important;
+        background-size: 400% 400% !important;
+        animation: gradientBG 15s ease infinite;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Hiệu ứng cho các link trong footer */
+    .footer a {
+        position: relative;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .footer a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: linear-gradient(to right, #74b9ff, #0984e3);
+        transition: width 0.3s ease;
+    }
+
+    .footer a:hover {
+        color: #74b9ff !important;
+        transform: translateX(5px);
+    }
+
+    .footer a:hover::after {
+        width: 100%;
+    }
+
+    /* Hiệu ứng cho social media icons */
+    .social-links a {
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.1);
+        transition: all 0.3s ease;
+        text-decoration: none !important;
+    }
+
+    .social-links a:hover {
+        transform: translateY(-5px) scale(1.1);
+        background: linear-gradient(45deg, #74b9ff, #0984e3);
+        box-shadow: 0 5px 15px rgba(116, 185, 255, 0.4);
+        text-decoration: none !important;
+    }
+
+    .social-links a:hover i {
+        animation: bounce 0.5s ease infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+
+    /* Hiệu ứng cho student info section */
+    .footer .student-info {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .footer .student-info:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Hiệu ứng cho headings trong footer */
+    .footer h5 {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+
+    .footer h5::after {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to right, #74b9ff, transparent);
+        transition: width 0.3s ease;
+    }
+
+    .footer h5:hover::after {
+        width: 100%;
+    }
+
+    /* Hiệu ứng cho phần thông tin sinh viên */
+    .student-info-section {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.08));
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .student-info-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(116,185,255,0.1) 0%, transparent 50%);
+        animation: rotate 15s linear infinite;
+        z-index: -1;
+    }
+
+    .student-info-section::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, 
+            rgba(116,185,255,0.1) 0%,
+            transparent 20%,
+            transparent 80%,
+            rgba(116,185,255,0.1) 100%
+        );
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    .student-info-section:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        border: 1px solid rgba(116,185,255,0.3);
+    }
+
+    .student-info-section:hover::after {
+        opacity: 1;
+    }
+
+    .student-info-section h5 {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+        background: linear-gradient(45deg, #74b9ff, #0984e3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: colorFlow 5s ease infinite;
+    }
+
+    .student-info-section p {
+        position: relative;
+        transition: all 0.3s ease;
+        padding-left: 0;
+        transform-origin: left;
+    }
+
+    .student-info-section:hover p {
+        padding-left: 20px;
+        color: #74b9ff;
+        transform: scale(1.02);
+    }
+
+    .student-info-section p::before {
+        content: '★';
+        position: absolute;
+        left: -20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        color: #74b9ff;
+        animation: spin 2s linear infinite;
+    }
+
+    .student-info-section:hover p::before {
+        left: 0;
+        opacity: 1;
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes colorFlow {
+        0% { filter: hue-rotate(0deg); }
+        50% { filter: hue-rotate(180deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .student-info-section p:hover {
+        transform: translateX(10px) scale(1.05);
+        text-shadow: 0 0 10px rgba(116,185,255,0.5);
+    }
+
+    /* Hiệu ứng cho phần thông tin game */
+    .game-info h2 {
+        position: relative;
+        display: block;  /* Thay đổi từ inline-block thành block */
+        text-align: center;  /* Thêm thuộc tính căn giữa */
+        width: 100%;  /* Đảm bảo chiếm toàn bộ chiều rộng */
+        background: linear-gradient(45deg, #2C3E50, #3498db, #2980b9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: titleGlow 3s ease-in-out infinite;
+    }
+
+    .game-info p {
+        position: relative;
+        transition: all 0.3s ease;
+        transform: translateY(20px);
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .game-info img {
+        transition: all 0.5s ease;
+        transform: scale(0.95);
+        filter: brightness(0.9);
+    }
+
+    .game-info:hover img {
+        transform: scale(1);
+        filter: brightness(1.1);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .game-info .table {
+        transform: translateY(20px);
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards 0.3s;
+    }
+
+    .game-info .table tr {
+        transition: all 0.3s ease;
+    }
+
+    .game-info .table tr:hover {
+        background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
+        transform: translateX(10px);
+    }
+
+    @keyframes titleGlow {
+        0%, 100% {
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+        50% {
+            text-shadow: 0 0 20px rgba(52, 152, 219, 0.8);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Hiệu ứng cho background overlay */
+    .background-overlay {
+        animation: pulseOpacity 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseOpacity {
+        0%, 100% {
+            opacity: 0.4;
+        }
+        50% {
+            opacity: 0.6;
+        }
+    }
+    
+    </style>
     </style>
 </head>
 
 <body>
     <!-- Thanh điều hướng -->
-    <nav class="navbar navbar-expand-lg" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: linear-gradient(to right, #FFF2CC, #FFFAF0);">
+    <nav class="navbar navbar-expand-lg"
+        style="position: fixed; top: 0; width: 100%; z-index: 1000; background: linear-gradient(to right, #FFF2CC, #FFFAF0);">
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand" href="#" style="margin-left: 15px;">
                 <img src="picture/logo.jpg" alt="logo" height="60px">
             </a>
-    
+
             <!-- Nút hamburger -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-                    style="border: none; padding: 8px;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                style="border: none; padding: 8px;">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <!-- Menu items -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="genshin.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Trang chủ</a>
+                        <a class="nav-link" href="genshin.html"
+                            style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nhanvat.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nhân vật</a>
+                        <a class="nav-link" href="nhanvat.html"
+                            style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nhân vật</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nguyento.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nguyên tố</a>
+                        <a class="nav-link" href="nguyento.html"
+                            style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nguyên tố</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://sdk.hoyoverse.com/payment/genshin/index.html#/" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nạp</a>
+                        <a class="nav-link" href="https://sdk.hoyoverse.com/payment/genshin/index.html#/"
+                            target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nạp</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://genshin.hoyoverse.com/vi/gift" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Mã quà</a>
+                        <a class="nav-link" href="https://genshin.hoyoverse.com/vi/gift" target="_blank"
+                            style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Mã quà</a>
                     </li>
                 </ul>
-                <a href="https://genshin.hoyoverse.com/vi/download" target="_blank" class="btn btn-warning" 
-                   style="padding: 10px 20px; font-size: 18px; color: #8B4513; text-decoration: none; transition: all 0.3s ease; margin: 10px 15px;">
+                <a href="https://genshin.hoyoverse.com/vi/download" target="_blank" class="btn btn-warning"
+                    style="padding: 10px 20px; font-size: 18px; color: #8B4513; text-decoration: none; transition: all 0.3s ease; margin: 10px 15px;">
                     Tải game
                 </a>
             </div>
@@ -331,7 +629,7 @@
                     <div class="landmark-card">
                         <img src="picture/cayto.jpg" alt="Windrise" class="img-fluid rounded mb-3">
                         <h4>Windrise</h4>
-                        <p>Nơi có cây Windrise thiêng liêng, biểu tượng của Mondstadt.</p>
+                        <p>Nơi có cây Windrise thiêng liêng, biểu tượng ca Mondstadt.</p>
                     </div>
                 </div>
 
@@ -341,7 +639,7 @@
                         <img src="picture/phetichphonglong.webp" alt="Stormterror's Lair"
                             class="img-fluid rounded mb-3">
                         <h4>Phế tích Phong Long</h4>
-                        <p>Nơi trú ngụ của Dvalin, một trong Tứ Đại Phong Long của Mondstadt, hiện là di tích lịch sử
+                        <p>Nơi trú ngụ của Dvalin, một trong Tứ Đại Phong Long của Mondstadt, hiện là di tích lch sử
                             quan trọng.</p>
                     </div>
                 </div>
@@ -369,7 +667,6 @@
 
     <!-- Nhân vật nổi tiếng -->
     <section class="character-carousel">
-        <div class="container">
             <h2 class="section-title text-center mb-5">Nhân Vật Tiêu Biểu</h2>
             <div class="character-slider">
                 <!-- Jean -->
@@ -378,7 +675,8 @@
                         <img src="picture/jean.webp" alt="Jean">
                     </div>
                     <div class="character-info">
-                        <span class="vision-badge" style="background: linear-gradient(45deg, #77A1D3, #79CBCA);">Phong</span>
+                        <span class="vision-badge"
+                            style="background: linear-gradient(45deg, #77A1D3, #79CBCA);">Phong</span>
                         <h5>Jean</h5>
                         <p>Đội trưởng đại diện</p>
                     </div>
@@ -390,7 +688,8 @@
                         <img src="picture/venti.webp" alt="Venti">
                     </div>
                     <div class="character-info">
-                        <span class="vision-badge" style="background: linear-gradient(45deg, #77A1D3, #79CBCA);">Phong</span>
+                        <span class="vision-badge"
+                            style="background: linear-gradient(45deg, #77A1D3, #79CBCA);">Phong</span>
                         <h5>Venti</h5>
                         <p>Thần Barbatos</p>
                     </div>
@@ -402,7 +701,8 @@
                         <img src="picture/diluc.webp" alt="Diluc">
                     </div>
                     <div class="character-info">
-                        <span class="vision-badge" style="background: linear-gradient(45deg, #FF512F, #F09819);">Hỏa</span>
+                        <span class="vision-badge"
+                            style="background: linear-gradient(45deg, #FF512F, #F09819);">Hỏa</span>
                         <h5>Diluc</h5>
                         <p>Chủ nhân tửu trang Dawn</p>
                     </div>
@@ -414,7 +714,8 @@
                         <img src="picture/lisa.webp" alt="Lisa">
                     </div>
                     <div class="character-info">
-                        <span class="vision-badge" style="background: linear-gradient(45deg, #9796F0, #FBC7D4);">Lôi</span>
+                        <span class="vision-badge"
+                            style="background: linear-gradient(45deg, #9796F0, #FBC7D4);">Lôi</span>
                         <h5>Lisa</h5>
                         <p>Thủ thư Hiệp sĩ Favonius</p>
                     </div>
@@ -426,7 +727,8 @@
                         <img src="picture/klee.webp" alt="Klee">
                     </div>
                     <div class="character-info">
-                        <span class="vision-badge" style="background: linear-gradient(45deg, #FF512F, #F09819);">Hỏa</span>
+                        <span class="vision-badge"
+                            style="background: linear-gradient(45deg, #FF512F, #F09819);">Hỏa</span>
                         <h5>Klee</h5>
                         <p>Hiệp sĩ nhí</p>
                     </div>
@@ -438,7 +740,8 @@
                         <img src="picture/eula.webp" alt="Eula">
                     </div>
                     <div class="character-info">
-                        <span class="vision-badge" style="background: linear-gradient(45deg, #A1C4FD, #C2E9FB);">Băng</span>
+                        <span class="vision-badge"
+                            style="background: linear-gradient(45deg, #A1C4FD, #C2E9FB);">Băng</span>
                         <h5>Eula</h5>
                         <p>Đội trưởng trinh sát</p>
                     </div>
@@ -534,24 +837,8 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <!-- Thêm script cho character carousel -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.character-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseover', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
-                    this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.2)';
-                });
-                
-                card.addEventListener('mouseout', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                    this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
-                });
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    
 </body>
 
 </html>

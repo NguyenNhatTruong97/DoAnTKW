@@ -8,188 +8,99 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Thêm vào sau các link CSS khác -->
     <style>
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
+        .content {
+            padding-top: 100px;
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: #8B4513;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+        body {
+            background-color: #f0f4f8; /* Màu nền nhẹ cho toàn bộ trang */
+            font-family: 'Arial', sans-serif; /* Font chữ dễ đọc */
+            color: #333; /* Màu chữ chính */
         }
 
-        .nav-link:hover {
-            color: #5c2807 !important;
+       .navbar {
+            transition: background-color 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển màu nền và bóng cho navbar */
         }
 
-        .nav-link:hover::after {
-            width: 80%;
-        }
-       
-        /* Style cho phần tìm kiếm */
-        .search-section {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            margin-top: 100px;
+        .navbar {
+            background: linear-gradient(to right, #ffcc00, #ffeb3b); /* Màu nền gradient cho navbar */
         }
 
-        .form-label {
-            color: #2C3E50;
-            font-weight: bold;
-            margin-bottom: 10px;
+        .navbar:hover {
+            background: linear-gradient(to right, #ffeb3b, #ffcc00); /* Đảo ngược màu nền khi hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Thêm bóng cho navbar khi hover */
         }
 
-        .form-select {
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            padding: 12px;
+        .navbar-brand img {
+            transition: transform 0.3s; /* Hiệu ứng phóng to cho logo */
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.1); /* Phóng to logo khi hover */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ff5722; /* Màu chữ khi hover */
+            transform: scale(1.1); /* Phóng to liên kết khi hover */
+            background-color: #74b9ff;
+            border-radius: 20px;
             transition: all 0.3s ease;
         }
 
-        .form-select:focus {
-            border-color: #77A1D3;
-            box-shadow: 0 0 0 0.2rem rgba(119, 161, 211, 0.25);
-        }
-
-        .search-buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .search-buttons button {
-            padding: 10px 30px;
-            margin: 0 10px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #77A1D3, #79CBCA);
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(119, 161, 211, 0.4);
-        }
-
-        .btn-outline-secondary:hover {
-            transform: translateY(-2px);
-            background-color: #e9ecef;
-        }
-
-        /* Style cho kết quả tìm kiếm */
-        .search-result-heading {
-            position: relative;
-            padding-bottom: 15px;
-            margin-bottom: 40px;
-        }
-
-        .search-result-heading::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, #77A1D3, #79CBCA);
-            border-radius: 2px;
-        }
-
-        /* Style cho card nhân vật */
-        .character {
-            margin-bottom: 30px;
-        }
 
         .card {
-            border: none;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s; /* Hiệu ứng phóng to và bóng cho thẻ card */
+            border-radius: 10px; /* Bo góc cho thẻ card */
+            overflow: hidden; /* Ẩn phần thừa */
+            border: 1px solid #ddd; /* Đường viền cho thẻ card */
+            background-color: #ffffff; /* Màu nền cho thẻ card */
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: scale(1.05); /* Phóng to thẻ card khi hover */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Bóng cho thẻ card khi hover */
         }
 
-        .card-img-top {
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .btn-warning {
+            transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền cho nút */
+            border-radius: 5px; /* Bo góc cho nút */
+            background-color: #ff9800; /* Màu nền cho nút */
+            color: white; /* Màu chữ cho nút */
         }
 
-        .card:hover .card-img-top {
-            transform: scale(1.1);
+        .btn-warning:hover {
+            background-color: #ff5722; /* Màu nền khi hover trên nút */
         }
 
-        .card-body {
-            padding: 20px;
-            background: white;
+        h2.search-result-heading {
+            color: #2C3E50; /* Màu tiêu đề kết quả tìm kiếm */
+            margin: 30px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng cho tiêu đề */
+        }
+        footer {
+            background: linear-gradient(to right, #1a1c2c, #2d3436); /* Màu nền cho footer */
+            color: white; 
+            padding: 30px 0 10px 0;
         }
 
-        .card-title {
-            color: #2C3E50;
-            font-weight: bold;
-            margin-bottom: 10px;
+        footer h5 {
+            color: #74b9ff; /* Màu tiêu đề trong footer */
         }
 
-        .card-text {
-            color: #7f8c8d;
-            font-size: 0.9rem;
+        footer a {
+            color: #dcdde1; /* Màu liên kết trong footer */
+            transition: color 0.3s; /* Hiệu ứng chuyển màu cho liên kết */
         }
 
-        /* Style cho tiêu đề phân loại nguyên tố */
-        h3.text-center {
-            color: #2C3E50;
-            font-weight: bold;
-            margin: 40px 0 20px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
+        footer a:hover {
+            color: #ffcc00; /* Màu liên kết khi hover */
         }
 
-        h3.text-center::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, #77A1D3, #79CBCA);
-            border-radius: 2px;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .search-section {
-                padding: 20px;
-                margin-top: 80px;
-            }
-
-            .search-buttons button {
-                width: 100%;
-                margin: 10px 0;
-            }
-
-            .card-img-top {
-                height: 250px;
-            }
+        .search-section {
+            background-color: #ffffff; /* Màu nền cho phần tìm kiếm */
+            border-radius: 10px; /* Bo góc cho phần tìm kiếm */
+            padding: 20px; /* Padding cho phần tìm kiếm */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bóng cho phần tìm kiếm */
         }
     </style>
 </head>
@@ -237,7 +148,7 @@
     </div>
 </nav>
 
-    <div class="container mt-5">
+    <div class="container content">
 
         <div class="search-section container">
             <form id="searchForm" class="search-form">
@@ -287,52 +198,11 @@
             <!-- Nhân vật hệ Phong -->
             <h3 class="text-center">Hệ: Phong</h3>
             <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Cung">
-                <div class="card"
-                    style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;"
-                    onmouseover="this.style.transform='translateY(-15px) scale(1.05)'; 
-                                this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)';
-                                this.style.background='linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))';
-                                this.querySelector('.element-text').style.background='linear-gradient(45deg, #77A1D3, #79CBCA)';
-                                this.querySelector('.element-text').style.webkitBackgroundClip='text';
-                                this.querySelector('.element-text').style.color='transparent';
-                                this.querySelector('.weapon-text').style.background='linear-gradient(45deg, #FFB88C, #FF9A9E)';
-                                this.querySelector('.weapon-text').style.webkitBackgroundClip='text';
-                                this.querySelector('.weapon-text').style.color='transparent'"
-                    onmouseout="this.style.transform='translateY(0) scale(1)'; 
-                               this.style.boxShadow='none';
-                               this.style.background='white';
-                               this.querySelector('.element-text').style.background='none';
-                               this.querySelector('.element-text').style.color='#77A1D3';
-                               this.querySelector('.weapon-text').style.background='none';
-                               this.querySelector('.weapon-text').style.color='#79CBCA'">
-                    <img src="picture/venti.webp" class="card-img-top" alt="Venti" 
-                        style="transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 1;"
-                        onmouseover="this.style.transform='scale(1.15)'; this.style.filter='brightness(1.1) contrast(1.1)'"
-                        onmouseout="this.style.transform='scale(1)'; this.style.filter='none'">
+                <div class="card">
+                    <img src="picture/venti.webp" class="card-img-top" alt="Venti">
                     <div class="card-body">
-                        <h5 class="card-title" style="position: relative; display: inline-block; transition: all 0.3s ease;">
-                            Venti
-                            <span style="position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; 
-                                       background: linear-gradient(90deg, #77A1D3, #79CBCA, #77A1D3); 
-                                       transition: width 0.5s ease; background-size: 200% 100%;"
-                                 onmouseover="this.style.width='100%'; this.style.backgroundPosition='right center'"
-                                 onmouseout="this.style.width='0'; this.style.backgroundPosition='left center'"></span>
-                        </h5>
-                        <p class="card-text" style="opacity: 0.8; transition: all 0.3s ease;"
-                           onmouseover="this.style.opacity='1'; this.style.transform='translateX(10px)'"
-                           onmouseout="this.style.opacity='0.8'; this.style.transform='translateX(0)'">
-                            <span class="element-text" style="font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;">
-                                Hệ: <span style="background: linear-gradient(45deg, #77A1D3, #79CBCA); -webkit-background-clip: text; color: transparent;">Phong</span>
-                            </span> 
-                            | 
-                            <span class="weapon-text" style="font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;">
-                                Vũ khí: <span style="background: linear-gradient(45deg, #FFB88C, #FF9A9E); -webkit-background-clip: text; color: transparent;">Cung</span>
-                            </span>
-                        </p>
-                        <div class="card-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-                                                        background: linear-gradient(135deg, rgba(119,161,211,0.1), rgba(255,184,140,0.1));
-                                                        opacity: 0; transition: opacity 0.5s ease;
-                                                        pointer-events: none;"></div>
+                        <h5 class="card-title">Venti</h5>
+                        <p class="card-text">Hệ: Phong | Vũ khí: Cung</p>
                     </div>
                 </div>
             </div>
@@ -377,7 +247,7 @@
                     <img src="picture/xiao.webp" class="card-img-top" alt="xiao">
                     <div class="card-body">
                         <h5 class="card-title">Xiao</h5>
-                        <p class="card-text">Hệ: Phong | Vũ khí: Vũ khí cán dài</p>
+                        <p class="card-text">Hệ: Phong | V khí: Vũ khí cán dài</p>
                     </div>
                 </div>
             </div>
@@ -441,7 +311,7 @@
 
             <!-- Nhân vật hệ Lôi -->
             <h3 class="text-center">Hệ: Lôi</h3>
-            <div class="col-md-4 mb-4 character" data-element="L��i" data-weapon="Vũ khí cán dài">
+            <div class="col-md-4 mb-4 character" data-element="Li" data-weapon="Vũ khí cán dài">
                 <div class="card">
                     <img src="picture/cyno.webp" class="card-img-top" alt="Cyno">
                     <div class="card-body">
@@ -588,7 +458,7 @@
                     <img src="picture/xiangling.webp" class="card-img-top" alt="Xiangling">
                     <div class="card-body">
                         <h5 class="card-title">Xiangling</h5>
-                        <p class="card-text">Hệ: Hỏa | Vũ khí: Vũ khí cán dài</p>
+                        <p class="card-text">Hệ: Hỏa | Vũ kh: Vũ khí cán dài</p>
                     </div>
                 </div>
             </div>
@@ -814,158 +684,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <script>
-        document.getElementById('searchForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const element = document.getElementById('element').value;
-            const weapon = document.getElementById('weapon').value;
-            const characters = document.querySelectorAll('.character');
-            const elementHeadings = document.querySelectorAll('h3.text-center');
-            const searchResultHeading = document.querySelector('.search-result-heading');
-
-            // Ẩn tất cả các nhân vật và tiêu đề nguyên tố
-            characters.forEach(character => {
-                character.style.display = 'none';
-            });
-            elementHeadings.forEach(heading => {
-                heading.style.display = 'none';
-            });
-
-            // Luôn hiển thị heading "Kết quả tìm kiếm"
-            searchResultHeading.style.display = 'block';
-
-            // Hiển thị các nhân vật phù hợp
-            let hasResults = false;
-            characters.forEach(character => {
-                const characterElement = character.getAttribute('data-element');
-                const characterWeapon = character.getAttribute('data-weapon');
-
-                if ((element === '' || characterElement === element) && 
-                    (weapon === '' || characterWeapon === weapon)) {
-                    character.style.display = 'block';
-                    hasResults = true;
-                }
-            });
-
-            // Nếu không có kết quả, hiển thị thông báo
-            if (!hasResults) {
-                const resultDiv = document.getElementById('result');
-                resultDiv.innerHTML = '<div class="col-12 text-center"><p>Không tìm thấy nhân vật phù hợp</p></div>';
-            }
-        });
-
-        // Xử lý reset form
-        document.getElementById('searchForm').addEventListener('reset', function () {
-            const characters = document.querySelectorAll('.character');
-            const elementHeadings = document.querySelectorAll('h3.text-center');
-            const searchResultHeading = document.querySelector('.search-result-heading');
-
-            // Hiển thị lại tất cả
-            characters.forEach(character => {
-                character.style.display = 'block';
-            });
-            elementHeadings.forEach(heading => {
-                heading.style.display = 'block';
-            });
-            searchResultHeading.classList.remove('hidden');
-        });
-
-        // Hàm áp dụng style cho cards
-        function applyCardStyles() {
-            const cards = document.querySelectorAll('.character .card');
-            const elementColors = {
-                'Phong': ['#77A1D3', '#79CBCA'],
-                'Nham': ['#FFB88C', '#DE6262'],
-                'Lôi': ['#9796F0', '#FBC7D4'],
-                'Thảo': ['#B4EC51', '#429321'],
-                'Thủy': ['#48C6EF', '#6F86D6'],
-                'Hỏa': ['#FF512F', '#F09819'],
-                'Băng': ['#A1C4FD', '#C2E9FB']
-            };
-
-            cards.forEach(card => {
-                try {
-                    const element = card.closest('.character').getAttribute('data-element');
-                    const colors = elementColors[element] || ['#77A1D3', '#79CBCA'];
-
-                    // Cập nhật style cho card
-                    card.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                    card.style.cursor = 'pointer';
-                    card.style.position = 'relative';
-                    card.style.overflow = 'hidden';
-
-                    const cardBody = card.querySelector('.card-body');
-                    if (!cardBody) return;
-
-                    const title = cardBody.querySelector('.card-title')?.textContent || '';
-                    const cardText = cardBody.querySelector('.card-text')?.textContent || '';
-                    const [elementText, weaponText] = cardText.split('|');
-                    if (!elementText || !weaponText) return;
-
-                    const [, elementValue] = elementText.split(':');
-                    const [, weaponValue] = weaponText.split(':');
-
-                    // Cập nhật HTML cho card body
-                    cardBody.innerHTML = `
-                        <h5 class="card-title" style="position: relative; display: inline-block; transition: all 0.3s ease;">
-                            ${title}
-                            <span style="position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; 
-                                       background: linear-gradient(90deg, ${colors[0]}, ${colors[1]}, ${colors[0]}); 
-                                       transition: width 0.5s ease; background-size: 200% 100%;"
-                                 onmouseover="this.style.width='100%'; this.style.backgroundPosition='right center'"
-                                 onmouseout="this.style.width='0'; this.style.backgroundPosition='left center'"></span>
-                        </h5>
-                        <p class="card-text" style="opacity: 0.8; transition: all 0.3s ease;"
-                           onmouseover="this.style.opacity='1'; this.style.transform='translateX(10px)'"
-                           onmouseout="this.style.opacity='0.8'; this.style.transform='translateX(0)'">
-                            <span class="element-text" style="font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;">
-                                Hệ: <span style="background: linear-gradient(45deg, ${colors[0]}, ${colors[1]}); -webkit-background-clip: text; color: transparent;">${elementValue?.trim()}</span>
-                            </span> 
-                            | 
-                            <span class="weapon-text" style="font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;">
-                                Vũ khí: <span style="background: linear-gradient(45deg, #FFB88C, #FF9A9E); -webkit-background-clip: text; color: transparent;">${weaponValue?.trim()}</span>
-                            </span>
-                        </p>
-                    `;
-
-                    // Thêm hover effects
-                    card.addEventListener('mouseover', function() {
-                        this.style.transform = 'translateY(-15px) scale(1.05)';
-                        this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)';
-                        this.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))';
-                    });
-
-                    card.addEventListener('mouseout', function() {
-                        this.style.transform = 'translateY(0) scale(1)';
-                        this.style.boxShadow = 'none';
-                        this.style.background = 'white';
-                    });
-
-                    // Thêm hover effect cho hình ảnh
-                    const img = card.querySelector('img');
-                    if (img) {
-                        img.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                        img.style.position = 'relative';
-                        img.style.zIndex = '1';
-                        img.addEventListener('mouseover', function() {
-                            this.style.transform = 'scale(1.15)';
-                            this.style.filter = 'brightness(1.1) contrast(1.1)';
-                        });
-                        img.addEventListener('mouseout', function() {
-                            this.style.transform = 'scale(1)';
-                            this.style.filter = 'none';
-                        });
-                    }
-                } catch (error) {
-                    console.error('Error applying card styles:', error);
-                }
-            });
-        }
-
-        // Gọi hàm khi trang được load
-        document.addEventListener('DOMContentLoaded', applyCardStyles);
-    </script>
+    <script src="character.js"></script>
 </body>
 
 </html>

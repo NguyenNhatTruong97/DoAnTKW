@@ -227,6 +227,292 @@
                 font-size: 1.2rem;
             }
         }
+
+        /* Hiệu ứng cho footer */
+    .footer {
+        background: linear-gradient(45deg, #1a1c2c, #2d3436, #2c3e50, #34495e) !important;
+        background-size: 400% 400% !important;
+        animation: gradientBG 15s ease infinite;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Hiệu ứng cho các link trong footer */
+    .footer a {
+        position: relative;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .footer a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: linear-gradient(to right, #74b9ff, #0984e3);
+        transition: width 0.3s ease;
+    }
+
+    .footer a:hover {
+        color: #74b9ff !important;
+        transform: translateX(5px);
+    }
+
+    .footer a:hover::after {
+        width: 100%;
+    }
+
+    /* Hiệu ứng cho social media icons */
+    .social-links a {
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.1);
+        transition: all 0.3s ease;
+        text-decoration: none !important;
+    }
+
+    .social-links a:hover {
+        transform: translateY(-5px) scale(1.1);
+        background: linear-gradient(45deg, #74b9ff, #0984e3);
+        box-shadow: 0 5px 15px rgba(116, 185, 255, 0.4);
+        text-decoration: none !important;
+    }
+
+    .social-links a:hover i {
+        animation: bounce 0.5s ease infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+
+    /* Hiệu ứng cho student info section */
+    .footer .student-info {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .footer .student-info:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Hiệu ứng cho headings trong footer */
+    .footer h5 {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+
+    .footer h5::after {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to right, #74b9ff, transparent);
+        transition: width 0.3s ease;
+    }
+
+    .footer h5:hover::after {
+        width: 100%;
+    }
+
+    /* Hiệu ứng cho phần thông tin sinh viên */
+    .student-info-section {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.08));
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .student-info-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(116,185,255,0.1) 0%, transparent 50%);
+        animation: rotate 15s linear infinite;
+        z-index: -1;
+    }
+
+    .student-info-section::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, 
+            rgba(116,185,255,0.1) 0%,
+            transparent 20%,
+            transparent 80%,
+            rgba(116,185,255,0.1) 100%
+        );
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    .student-info-section:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        border: 1px solid rgba(116,185,255,0.3);
+    }
+
+    .student-info-section:hover::after {
+        opacity: 1;
+    }
+
+    .student-info-section h5 {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+        background: linear-gradient(45deg, #74b9ff, #0984e3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: colorFlow 5s ease infinite;
+    }
+
+    .student-info-section p {
+        position: relative;
+        transition: all 0.3s ease;
+        padding-left: 0;
+        transform-origin: left;
+    }
+
+    .student-info-section:hover p {
+        padding-left: 20px;
+        color: #74b9ff;
+        transform: scale(1.02);
+    }
+
+    .student-info-section p::before {
+        content: '★';
+        position: absolute;
+        left: -20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        color: #74b9ff;
+        animation: spin 2s linear infinite;
+    }
+
+    .student-info-section:hover p::before {
+        left: 0;
+        opacity: 1;
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes colorFlow {
+        0% { filter: hue-rotate(0deg); }
+        50% { filter: hue-rotate(180deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .student-info-section p:hover {
+        transform: translateX(10px) scale(1.05);
+        text-shadow: 0 0 10px rgba(116,185,255,0.5);
+    }
+
+    /* Hiệu ứng cho phần thông tin game */
+    .game-info h2 {
+        position: relative;
+        display: block;  /* Thay đổi từ inline-block thành block */
+        text-align: center;  /* Thêm thuộc tính căn giữa */
+        width: 100%;  /* Đảm bảo chiếm toàn bộ chiều rộng */
+        background: linear-gradient(45deg, #2C3E50, #3498db, #2980b9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: titleGlow 3s ease-in-out infinite;
+    }
+
+    .game-info p {
+        position: relative;
+        transition: all 0.3s ease;
+        transform: translateY(20px);
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .game-info img {
+        transition: all 0.5s ease;
+        transform: scale(0.95);
+        filter: brightness(0.9);
+    }
+
+    .game-info:hover img {
+        transform: scale(1);
+        filter: brightness(1.1);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .game-info .table {
+        transform: translateY(20px);
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards 0.3s;
+    }
+
+    .game-info .table tr {
+        transition: all 0.3s ease;
+    }
+
+    .game-info .table tr:hover {
+        background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
+        transform: translateX(10px);
+    }
+
+    @keyframes titleGlow {
+        0%, 100% {
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+        50% {
+            text-shadow: 0 0 20px rgba(52, 152, 219, 0.8);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Hiệu ứng cho background overlay */
+    .background-overlay {
+        animation: pulseOpacity 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseOpacity {
+        0%, 100% {
+            opacity: 0.4;
+        }
+        50% {
+            opacity: 0.6;
+        }
+    }
 </style>
 <body>
     <!-- Thanh điều hướng -->
