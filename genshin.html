@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genshin Impact</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
     /* ===== RESET & GLOBAL STYLES ===== */
     body {
@@ -92,13 +94,6 @@
     .btn {
         overflow: hidden;
         position: relative;
-    }
-
-    /* ===== FOOTER STYLES ===== */
-    .footer {
-        background: linear-gradient(45deg, #1a1c2c, #2d3436, #2c3e50, #34495e) !important;
-        background-size: 400% 400% !important;
-        animation: gradientBG 15s ease infinite;
     }
 
     /* ===== MEDIA QUERIES ===== */
@@ -535,189 +530,9 @@
     }
 
     /* Hiệu ứng cho footer */
-    .footer {
-        background: linear-gradient(45deg, #1a1c2c, #2d3436, #2c3e50, #34495e) !important;
-        background-size: 400% 400% !important;
-        animation: gradientBG 15s ease infinite;
-        position: relative;
-        overflow: hidden;
-    }
+      
 
-    /* Hiệu ứng cho các link trong footer */
-    .footer a {
-        position: relative;
-        display: inline-block;
-        transition: all 0.3s ease;
-    }
-
-    .footer a::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background: linear-gradient(to right, #74b9ff, #0984e3);
-        transition: width 0.3s ease;
-    }
-
-    .footer a:hover {
-        color: #74b9ff !important;
-        transform: translateX(5px);
-    }
-
-    .footer a:hover::after {
-        width: 100%;
-    }
-
-    /* Hiệu ứng cho social media icons */
-    .social-links a {
-        position: relative;
-        overflow: hidden;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255,255,255,0.1);
-        transition: all 0.3s ease;
-        text-decoration: none !important;
-    }
-
-    .social-links a:hover {
-        transform: translateY(-5px) scale(1.1);
-        background: linear-gradient(45deg, #74b9ff, #0984e3);
-        box-shadow: 0 5px 15px rgba(116, 185, 255, 0.4);
-        text-decoration: none !important;
-    }
-
-    .social-links a:hover i {
-        animation: bounce 0.5s ease infinite;
-    }
-
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-3px); }
-    }
-
-    /* Hiệu ứng cho student info section */
-    .footer .student-info {
-        position: relative;
-        transition: all 0.3s ease;
-    }
-
-    .footer .student-info:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-
-    /* Hiệu ứng cho headings trong footer */
-    .footer h5 {
-        position: relative;
-        display: inline-block;
-        padding-bottom: 10px;
-    }
-
-    .footer h5::after {
-        content: '';
-        position: absolute;
-        width: 50%;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background: linear-gradient(to right, #74b9ff, transparent);
-        transition: width 0.3s ease;
-    }
-
-    .footer h5:hover::after {
-        width: 100%;
-    }
-
-    /* Hiệu ứng cho phần thông tin sinh viên */
-    .student-info-section {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.5s ease;
-        background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.08));
-        border: 1px solid rgba(255,255,255,0.1);
-        backdrop-filter: blur(10px);
-    }
-
-    .student-info-section::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(116,185,255,0.1) 0%, transparent 50%);
-        animation: rotate 15s linear infinite;
-        z-index: -1;
-    }
-
-    .student-info-section::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(45deg, 
-            rgba(116,185,255,0.1) 0%,
-            transparent 20%,
-            transparent 80%,
-            rgba(116,185,255,0.1) 100%
-        );
-        opacity: 0;
-        transition: all 0.5s ease;
-    }
-
-    .student-info-section:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        border: 1px solid rgba(116,185,255,0.3);
-    }
-
-    .student-info-section:hover::after {
-        opacity: 1;
-    }
-
-    .student-info-section h5 {
-        position: relative;
-        display: inline-block;
-        padding-bottom: 10px;
-        background: linear-gradient(45deg, #74b9ff, #0984e3);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: colorFlow 5s ease infinite;
-    }
-
-    .student-info-section p {
-        position: relative;
-        transition: all 0.3s ease;
-        padding-left: 0;
-        transform-origin: left;
-    }
-
-    .student-info-section:hover p {
-        padding-left: 20px;
-        color: #74b9ff;
-        transform: scale(1.02);
-    }
-
-    .student-info-section p::before {
-        content: '★';
-        position: absolute;
-        left: -20px;
-        opacity: 0;
-        transition: all 0.3s ease;
-        color: #74b9ff;
-        animation: spin 2s linear infinite;
-    }
-
-    .student-info-section:hover p::before {
-        left: 0;
-        opacity: 1;
-    }
-
+    
     @keyframes rotate {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
@@ -849,6 +664,18 @@
             opacity: 1;
         }
     }
+
+        .footer {
+            background-color: #f1f1f1;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer p {
+            margin: 0;
+            color: #333;
+        }
 </style>
 
 </head>
@@ -861,14 +688,12 @@
         <a class="navbar-brand" href="#" style="margin-left: 15px;">
             <img src="picture/logo.jpg" alt="logo" height="60px">
         </a>
-
         <!-- Nút hamburger -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
                 style="border: none; padding: 8px;">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <!-- Menu items -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
@@ -882,10 +707,7 @@
                     <a class="nav-link" href="nguyento.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nguyên tố</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://sdk.hoyoverse.com/payment/genshin/index.html#/" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nạp</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://genshin.hoyoverse.com/vi/gift" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Mã quà</a>
+                    <a class="nav-link" href="lienhe.html"  style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Liên hệ</a>
                 </li>
             </ul>
             <a href="https://genshin.hoyoverse.com/vi/download" target="_blank" class="btn btn-warning" 
@@ -1429,66 +1251,12 @@
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer" style="background: linear-gradient(to right, #1a1c2c, #2d3436); color: white; padding: 60px 0 20px 0;">
-        <div class="container">
-            <!-- Main Footer Content -->
-            <div class="row mb-4">
-                <!-- Liên kết -->
-                <div class="col-md-4">
-                    <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Liên kết hữu ích</h5>
-                    <ul style="list-style: none; padding: 0;">
-                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/home" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Trang chủ chính thức</a></li>
-                        <li class="mb-2"><a href="https://www.hoyolab.com/" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">HoYoLAB</a></li>
-                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/download" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tải game</a></li>
-                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/news" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tin tức</a></li>
-                    </ul>
-                </div>
-
-                <!-- Hỗ trợ -->
-                <div class="col-md-4">
-                    <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Hỗ trợ người chơi</h5>
-                    <ul style="list-style: none; padding: 0;">
-                        <li class="mb-2"><a href="https://www.hoyolab.com/article_pre/1308" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Hướng dẫn người mới</a></li>
-                        <li class="mb-2"><a href="https://genshin.hoyoverse.com/vi/company/privacy" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Chính sách bảo mật</a></li>
-                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/about-us" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Về chúng tôi</a></li>
-                        <li class="mb-2"><a href="https://www.hoyoverse.com/vi-vn/contact" target="_blank" style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Liên hệ</a></li>
-                    </ul>
-                </div>
-
-                <!-- Mạng xã hội -->
-                <div class="col-md-4">
-                    <h5 style="color: #74b9ff; margin-bottom: 20px; font-weight: bold;">Kết nối với chúng tôi</h5>
-                    <div class="social-links" style="display: flex; gap: 15px;">
-                        <a href="https://www.facebook.com/Genshinimpact.vi" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-facebook"></i></a>
-                        <a href="https://twitter.com/genshinimpactvi" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@GenshinImpact" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/genshinimpact/" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-instagram"></i></a>
-                        <a href="https://discord.com/invite/genshinimpact" target="_blank" style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Student Info Section -->
-            <div class="row justify-content-center mb-4">
-                <div class="col-12 text-center">
-                    <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;">
-                    <div class="student-info-section" style="padding: 20px; border-radius: 10px;">
-                        <h5 style="color: #74b9ff; font-weight: bold; margin-bottom: 15px;">Thông tin sinh viên thực hiện</h5>
-                        <div style="color: #dcdde1; font-size: 15px; line-height: 1.8;">
-                            <p style="margin-bottom: 5px;">Họ và tên: Nguyễn Nhật Trường</p>
-                            <p style="margin-bottom: 5px;">MSSV: 110122197</p>
-                            <p style="margin-bottom: 5px;">Lớp: D22TTC</p>
-                            <p style="margin-bottom: 5px;">Đồ án: Thiết kế website giới thiệu game Genshin Impact</p>
-                            <p style="margin-bottom: 5px;">Giảng viên hướng dẫn: Phạm Minh Đương</p>
-                            <p>Trường Đại học Trà Vinh</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+    <footer class="footer">
+        <p>Copyright © www.mygenshin.com</p>
+        <p>Điện thoại: 0394 127 625, Địa chỉ: Mỹ Cẩm, Càng Long, Trà Vinh</p>
     </footer>
+    
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

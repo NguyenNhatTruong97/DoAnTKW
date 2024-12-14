@@ -19,7 +19,7 @@
             color: #333; /* Màu chữ chính */
         }
 
-       .navbar {
+        .navbar {
             transition: background-color 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển màu nền và bóng cho navbar */
         }
 
@@ -28,7 +28,7 @@
         }
 
         .navbar:hover {
-            background: linear-gradient(to right, #ffeb3b, #ffcc00); /* Đảo ngược màu nền khi hover */
+            background: linear-gradient(to right, #ffeb3b, #ffcc00); /* ��ảo ngược màu nền khi hover */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Thêm bóng cho navbar khi hover */
         }
 
@@ -39,6 +39,7 @@
         .navbar-brand img:hover {
             transform: scale(1.1); /* Phóng to logo khi hover */
         }
+
         .navbar-nav .nav-link:hover {
             color: #ff5722; /* Màu chữ khi hover */
             transform: scale(1.1); /* Phóng to liên kết khi hover */
@@ -46,7 +47,6 @@
             border-radius: 20px;
             transition: all 0.3s ease;
         }
-
 
         .card {
             transition: transform 0.3s, box-shadow 0.3s; /* Hiệu ứng phóng to và bóng cho thẻ card */
@@ -77,23 +77,17 @@
             margin: 30px 0;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng cho tiêu đề */
         }
-        footer {
-            background: linear-gradient(to right, #1a1c2c, #2d3436); /* Màu nền cho footer */
-            color: white; 
-            padding: 30px 0 10px 0;
+
+        .footer {
+            background-color: #f1f1f1;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 30px;
         }
 
-        footer h5 {
-            color: #74b9ff; /* Màu tiêu đề trong footer */
-        }
-
-        footer a {
-            color: #dcdde1; /* Màu liên kết trong footer */
-            transition: color 0.3s; /* Hiệu ứng chuyển màu cho liên kết */
-        }
-
-        footer a:hover {
-            color: #ffcc00; /* Màu liên kết khi hover */
+        .footer p {
+            margin: 0;
+            color: #333;
         }
 
         .search-section {
@@ -134,11 +128,9 @@
                     <a class="nav-link" href="nguyento.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nguyên tố</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://sdk.hoyoverse.com/payment/genshin/index.html#/" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Nạp</a>
+                    <a class="nav-link" href="lienhe.html" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Liên hệ</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://genshin.hoyoverse.com/vi/gift" target="_blank" style="font-size: 18px; padding: 10px 20px; color: #8B4513;">Mã quà</a>
-                </li>
+
             </ul>
             <a href="https://genshin.hoyoverse.com/vi/download" target="_blank" class="btn btn-warning" 
                style="padding: 10px 20px; font-size: 18px; color: #8B4513; text-decoration: none; transition: all 0.3s ease; margin: 10px 15px;">
@@ -197,7 +189,7 @@
         <div id="result" class="row">
             <!-- Nhân vật hệ Phong -->
             <h3 class="text-center">Hệ: Phong</h3>
-            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Cung">
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Cung" data-name="venti">
                 <div class="card">
                     <img src="picture/venti.webp" class="card-img-top" alt="Venti">
                     <div class="card-body">
@@ -206,7 +198,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Kiếm đơn" data-name="jean">
                 <div class="card">
                     <img src="picture/jean.webp" class="card-img-top" alt="Jean">
                     <div class="card-body">
@@ -215,7 +207,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Kiếm đơn" data-name="kazuha">
                 <div class="card">
                     <img src="picture/kazuha.webp" class="card-img-top" alt="Kazuha">
                     <div class="card-body">
@@ -224,7 +216,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Pháp khí" data-name="xianyun">
                 <div class="card">
                     <img src="picture/xianyun.webp" class="card-img-top" alt="Xianyun">
                     <div class="card-body">
@@ -233,7 +225,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Pháp khí" data-name="sucrose">
                 <div class="card">
                     <img src="picture/sucrose.webp" class="card-img-top" alt="Sucrose">
                     <div class="card-body">
@@ -242,7 +234,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Vũ khí cán dài">
+            <div class="col-md-4 mb-4 character" data-element="Phong" data-weapon="Vũ khí cán dài" data-name="xiao">
                 <div class="card">
                     <img src="picture/xiao.webp" class="card-img-top" alt="xiao">
                     <div class="card-body">
@@ -254,7 +246,7 @@
 
             <!-- Nhân vật hệ Nham -->
             <h3 class="text-center">Hệ: Nham</h3>
-            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Kiếm đơn" data-name="albedo">
                 <div class="card">
                     <img src="picture/albedo.webp" class="card-img-top" alt="Albedo">
                     <div class="card-body">
@@ -263,7 +255,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Pháp khí" data-name="ningguang">
                 <div class="card">
                     <img src="picture/ningguang.webp" class="card-img-top" alt="Ningguang">
                     <div class="card-body">
@@ -272,7 +264,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Trọng kiếm">
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Trọng kiếm" data-name="itto">
                 <div class="card">
                     <img src="picture/itto.webp" class="card-img-top" alt="Itto">
                     <div class="card-body">
@@ -281,7 +273,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Vũ khí cán dài">
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Vũ khí cán dài" data-name="zhongli">
                 <div class="card">
                     <img src="picture/zhongli.webp" class="card-img-top" alt="zhongli">
                     <div class="card-body">
@@ -290,7 +282,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Trọng kiếm">
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="Trọng kiếm" data-name="navia">
                 <div class="card">
                     <img src="picture/navia.webp" class="card-img-top" alt="Navia">
                     <div class="card-body">
@@ -299,7 +291,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Nham" data-weapon="kiếm đơn" data-name="xilonen">
                 <div class="card">
                     <img src="picture/xilonen.webp" class="card-img-top" alt="xilonen">
                     <div class="card-body">
@@ -311,7 +303,7 @@
 
             <!-- Nhân vật hệ Lôi -->
             <h3 class="text-center">Hệ: Lôi</h3>
-            <div class="col-md-4 mb-4 character" data-element="Li" data-weapon="Vũ khí cán dài">
+            <div class="col-md-4 mb-4 character" data-element="Li" data-weapon="Vũ khí cán dài" data-name="cyno">
                 <div class="card">
                     <img src="picture/cyno.webp" class="card-img-top" alt="Cyno">
                     <div class="card-body">
@@ -320,7 +312,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Vũ khí cán dài">
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Vũ khí cán dài" data-name="raiden">
                 <div class="card">
                     <img src="picture/raiden.webp" class="card-img-top" alt="Raiden Shogun">
                     <div class="card-body">
@@ -329,7 +321,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Pháp khí" data-name="yaemiko">
                 <div class="card">
                     <img src="picture/yaemiko.webp" class="card-img-top" alt="Miko">
                     <div class="card-body">
@@ -338,7 +330,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Kiếm đơn" data-name="clorinde">
                 <div class="card">
                     <img src="picture/clorinde.webp" class="card-img-top" alt="Clorinde">
                     <div class="card-body">
@@ -347,7 +339,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="kiếm đơn" data-name="keqing">
                 <div class="card">
                     <img src="picture/keqing.webp" class="card-img-top" alt="Keqing">
                     <div class="card-body">
@@ -356,7 +348,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Cung">
+            <div class="col-md-4 mb-4 character" data-element="Lôi" data-weapon="Cung" data-name="sara">
                 <div class="card">
                     <img src="picture/sara.webp" class="card-img-top" alt="sara">
                     <div class="card-body">
@@ -368,16 +360,16 @@
 
             <!-- Nhân vật hệ Thảo -->
             <h3 class="text-center">Hệ: Thảo</h3>
-            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Pháp khí" data-name="nahida">
                 <div class="card">
                     <img src="picture/nahida.webp" class="card-img-top" alt="Nahida">
-                    <div class="card-body"
+                    <div class="card-body">
                         <h5 class="card-title">Nahida</h5>
                         <p class="card-text">Hệ: Thảo | Vũ khí: Pháp Khí</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Cung">
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Cung" data-name="tighnari">
                 <div class="card">
                     <img src="picture/tighnari.webp" class="card-img-top" alt="Tighnari">
                     <div class="card-body">
@@ -386,7 +378,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Cung">
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Cung" data-name="collei">
                 <div class="card">
                     <img src="picture/collei.webp" class="card-img-top" alt="Collei">
                     <div class="card-body">
@@ -395,17 +387,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Trọng kiếm">
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Trọng kiếm" data-name="kinich">
                 <div class="card">
                     <img src="picture/kinich.webp" class="card-img-top" alt="kinich">
                     <div class="card-body">
                         <h5 class="card-title">Kinich</h5>
-                        <p class="card-text">Hệ: Thảo | Vũ khí: Trọng Kiếm
-                        <p>
+                        <p class="card-text">Hệ: Thảo | Vũ khí: Trọng Kiếm</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Kiếm đơn" data-name="alhaitham">
                 <div class="card">
                     <img src="picture/alhaitham.webp" class="card-img-top" alt="Alhaitham">
                     <div class="card-body">
@@ -414,7 +405,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Thảo" data-weapon="Pháp khí" data-name="baizhu">
                 <div class="card">
                     <img src="picture/baizhu.webp" class="card-img-top" alt="baizhu">
                     <div class="card-body">
@@ -426,7 +417,7 @@
 
             <!-- Nhân vật hệ Hỏa -->
             <h3 class="text-center">Hệ: Hỏa</h3>
-            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Vũ khí cán dài">
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Vũ khí cán dài" data-name="hutao">
                 <div class="card">
                     <img src="picture/hutao.webp" class="card-img-top" alt="Hu Tao">
                     <div class="card-body">
@@ -435,7 +426,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="kiếm đơn" data-name="bennett">
                 <div class="card">
                     <img src="picture/bennett.webp" class="card-img-top" alt="bennett">
                     <div class="card-body">
@@ -444,7 +435,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Trọng kiếm">
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Trọng kiếm" data-name="diluc">
                 <div class="card">
                     <img src="picture/diluc.webp" class="card-img-top" alt="Diluc">
                     <div class="card-body">
@@ -453,7 +444,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="vũ khí cán dài">
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="vũ khí cán dài" data-name="xiangling">
                 <div class="card">
                     <img src="picture/xiangling.webp" class="card-img-top" alt="Xiangling">
                     <div class="card-body">
@@ -462,7 +453,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Pháp khí" data-name="klee">
                 <div class="card">
                     <img src="picture/klee.webp" class="card-img-top" alt="Klee">
                     <div class="card-body">
@@ -471,7 +462,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Cung">
+            <div class="col-md-4 mb-4 character" data-element="Hỏa" data-weapon="Cung" data-name="amber">
                 <div class="card">
                     <img src="picture/amber.webp" class="card-img-top" alt="Amber">
                     <div class="card-body">
@@ -483,7 +474,7 @@
 
             <!-- Nhân vật hệ Băng -->
             <h3 class="text-center">Hệ: Băng</h3>
-            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Cung">
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Cung" data-name="ganyu">
                 <div class="card">
                     <img src="picture/ganyu.webp" class="card-img-top" alt="Ganyu">
                     <div class="card-body">
@@ -492,7 +483,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Kiếm đơn" data-name="eula">
                 <div class="card">
                     <img src="picture/eula.webp" class="card-img-top" alt="Eula">
                     <div class="card-body">
@@ -501,7 +492,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Bng" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Bng" data-weapon="Kiếm đơn" data-name="ayaka">
                 <div class="card">
                     <img src="picture/ayaka.webp" class="card-img-top" alt="Kiếm đơn">
                     <div class="card-body">
@@ -510,7 +501,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Pháp khí" data-name="wriothhesley">
                 <div class="card">
                     <img src="picture/wriothhesley.webp" class="card-img-top" alt="wriothhesley">
                     <div class="card-body">
@@ -519,7 +510,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Kiếm đơn" data-name="layla">
                 <div class="card">
                     <img src="picture/layla.webp" class="card-img-top" alt="layla">
                     <div class="card-body">
@@ -528,7 +519,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Vũ khí cán dài">
+            <div class="col-md-4 mb-4 character" data-element="Băng" data-weapon="Vũ khí cán dài" data-name="shenhe">
                 <div class="card">
                     <img src="picture/shenhe.webp" class="card-img-top" alt="shenhe">
                     <div class="card-body">
@@ -540,7 +531,7 @@
 
             <!-- Nhân vật hệ Thủy -->
             <h3 class="text-center">Hệ: Thủy</h3>
-            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Cung">
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Cung" data-name="yelan">
                 <div class="card">
                     <img src="picture/yelan.webp" class="card-img-top" alt="yelan">
                     <div class="card-body">
@@ -549,7 +540,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Kiếm đơn" data-name="ayato">
                 <div class="card">
                     <img src="picture/ayato.webp" class="card-img-top" alt="Ayato">
                     <div class="card-body">
@@ -558,7 +549,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Pháp khí" data-name="kokomi">
                 <div class="card">
                     <img src="picture/kokomi.webp" class="card-img-top" alt="kokomi">
                     <div class="card-body">
@@ -567,7 +558,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Vũ khí cán dài">
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Vũ khí cán dài" data-name="candace">
                 <div class="card">
                     <img src="picture/candace.webp" class="card-img-top" alt="candace">
                     <div class="card-body">
@@ -576,7 +567,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Kiếm đơn">
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Kiếm đơn" data-name="xingqiu">
                 <div class="card">
                     <img src="picture/xingqiu.webp" class="card-img-top" alt="Xingqiu">
                     <div class="card-body">
@@ -585,7 +576,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Pháp khí">
+            <div class="col-md-4 mb-4 character" data-element="Thủy" data-weapon="Pháp khí" data-name="neuvillette">
                 <div class="card">
                     <img src="picture/neuvillette.webp" class="card-img-top" alt="neuvillette">
                     <div class="card-body">
@@ -597,94 +588,78 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer"
-        style="background: linear-gradient(to right, #1a1c2c, #2d3436); color: white; padding: 30px 0 10px 0;">
-        <div class="container">
-            <!-- Main Footer Content -->
-            <div class="row mb-3">
-                <!-- Liên kết -->
-                <div class="col-md-4">
-                    <h5 style="color: #74b9ff; margin-bottom: 15px; font-weight: bold;">Liên kết hữu ích</h5>
-                    <ul style="list-style: none; padding: 0;">
-                        <li class="mb-1"><a href="https://genshin.hoyoverse.com/vi/home" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Trang chủ chính
-                                thức</a></li>
-                        <li class="mb-1"><a href="https://www.hoyolab.com/" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">HoYoLAB</a></li>
-                        <li class="mb-1"><a href="https://genshin.hoyoverse.com/vi/download" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tải game</a></li>
-                        <li class="mb-1"><a href="https://genshin.hoyoverse.com/vi/news" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Tin tức</a></li>
-                    </ul>
-                </div>
-
-                <!-- Hỗ trợ -->
-                <div class="col-md-4">
-                    <h5 style="color: #74b9ff; margin-bottom: 15px; font-weight: bold;">Hỗ trợ người chơi</h5>
-                    <ul style="list-style: none; padding: 0;">
-                        <li class="mb-1"><a href="https://www.hoyolab.com/article_pre/1308" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Hướng dẫn người
-                                mới</a></li>
-                        <li class="mb-1"><a href="https://genshin.hoyoverse.com/vi/company/privacy" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Chính sách bảo
-                                mật</a></li>
-                        <li class="mb-1"><a href="https://www.hoyoverse.com/vi-vn/about-us" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Về chúng tôi</a>
-                        </li>
-                        <li class="mb-1"><a href="https://www.hoyoverse.com/vi-vn/contact" target="_blank"
-                                style="color: #dcdde1; text-decoration: none; transition: color 0.3s;">Liên hệ</a></li>
-                    </ul>
-                </div>
-
-                <!-- Mạng xã hội -->
-                <div class="col-md-4">
-                    <h5 style="color: #74b9ff; margin-bottom: 15px; font-weight: bold;">Kết nối với chúng tôi</h5>
-                    <div class="social-links" style="display: flex; gap: 15px;">
-                        <a href="https://www.facebook.com/Genshinimpact.vi" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-facebook"></i></a>
-                        <a href="https://twitter.com/genshinimpactvi" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@GenshinImpact" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/genshinimpact/" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-instagram"></i></a>
-                        <a href="https://discord.com/invite/genshinimpact" target="_blank"
-                            style="color: #dcdde1; font-size: 24px; transition: all 0.3s ease;"><i
-                                class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Student Info Section -->
-            <div class="row justify-content-center mb-2">
-                <div class="col-12 text-center">
-                    <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;">
-                    <div
-                        style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
-                        <h5 style="color: #74b9ff; font-weight: bold; margin-bottom: 10px;">Thông tin sinh viên thực
-                            hiện</h5>
-                        <div style="color: #dcdde1; font-size: 14px; line-height: 1.4;">
-                            <p style="margin-bottom: 3px;">Họ và tên: Nguyễn Nhật Trường</p>
-                            <p style="margin-bottom: 3px;">MSSV: 110122197</p>
-                            <p style="margin-bottom: 3px;">Lớp: D22TTC</p>
-                            <p style="margin-bottom: 3px;">Đồ án: Thiết kế website giới thiệu game Genshin Impact</p>
-                            <p style="margin-bottom: 3px;">Giảng viên hướng dẫn: Phạm Minh Đương</p>
-                            <p style="margin-bottom: 0;">Trường Đại học Trà Vinh</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <footer class="footer">
+        <p>Copyright © www.mygenshin.com</p>
+        <p>Điện thoại: 0394 127 625, Địa chỉ: Mỹ Cẩm, Càng Long, Trà Vinh</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <script src="character.js"></script>
+    <script>
+        // Xử lý tìm kiếm nhân vật
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            const element = document.getElementById('element').value;
+            const weapon = document.getElementById('weapon').value;
+            const characters = document.querySelectorAll('.character');
+            const elementHeadings = document.querySelectorAll('h3.text-center');
+            const searchResultHeading = document.querySelector('.search-result-heading');
+    
+            // Ẩn tất cả nhân vật và tiêu đề
+            characters.forEach(character => character.style.display = 'none');
+            elementHeadings.forEach(heading => heading.style.display = 'none');
+    
+            // Hiển thị heading kết quả tìm kiếm
+            searchResultHeading.style.display = 'block';
+    
+            // Lọc và hiển thị nhân vật phù hợp
+            let hasResults = false;
+            characters.forEach(character => {
+                const characterElement = character.getAttribute('data-element');
+                const characterWeapon = character.getAttribute('data-weapon');
+    
+                if ((element === '' || characterElement === element) && 
+                    (weapon === '' || characterWeapon === weapon)) {
+                    character.style.display = 'block'; // Hiển thị nhân vật phù hợp
+                    hasResults = true;
+                }
+            });
+    
+            // Nếu không có kết quả, ẩn tiêu đề kết quả tìm kiếm
+            if (!hasResults) {
+                searchResultHeading.style.display = 'none'; // Ẩn tiêu đề kết quả tìm kiếm
+            } else {
+                // Ẩn tất cả tiêu đề "HỆ" nếu có kết quả
+                elementHeadings.forEach(heading => heading.style.display = 'none');
+            }
+        });
+    
+        // Xử lý reset form
+        document.getElementById('searchForm').addEventListener('reset', function () {
+            const characters = document.querySelectorAll('.character');
+            const elementHeadings = document.querySelectorAll('h3.text-center');
+            const searchResultHeading = document.querySelector('.search-result-heading');
+    
+            // Hiển thị lại tất cả
+            characters.forEach(character => character.style.display = 'block');
+            elementHeadings.forEach(heading => heading.style.display = 'block');
+            searchResultHeading.classList.remove('hidden');
+        });
+    
+    
+        // Thêm sự kiện click cho các thẻ card
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.character .card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const characterName = card.closest('.character').getAttribute('data-name');
+                    window.open(`${characterName}.html`, '_blank'); // Chuyển hướng đến trang chi tiết
+                });
+            });
+        });
+    </script>
+    
 </body>
 
 </html>
